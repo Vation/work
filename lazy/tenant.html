@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top"><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item "><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item"><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="detail_panel">
+              <div class="panel_title_box">
+                <h2>租户管理</h2>
+              </div>
+              <div class="conditions_box">
+                <div>
+                  <el-select v-model="searchParams.valley_id" placeholder="小区">
+                    <el-option label="全部小区" value=""></el-option>
+                    <el-option v-for="valley in valleys" :key="valley.id" :label="valley.title" :value="valley.id"></el-option>
+                  </el-select>
+                </div>
+              </div>
+
+              <div class="service_content_box" style="margin-bottom: 20px">
+                <table class="detail_table" v-loading="loading">
+                  <tbody class="thead">
+                    <tr>
+                      <th width="60">ID</th>
+                      <th width="120">电话号码</th>
+                      <th width="120">姓名</th>
+                      <th width="360">身份证</th>
+                      <th>房间</th>
+                      <th width="100">门禁权限</th>
+                    </tr>
+                  </tbody>
+                  <tbody class="tbody">
+                    <tr>
+                      <td>8</td>
+                      <td>15910899512</td>
+                      <td class="title">
+                        乘务 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        8828288282892929 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        测试小区2栋3单元501房间 #2
+                      </td>
+                      <td>大门 / 里门</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>15910899605</td>
+                      <td class="title">
+                        陈三 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        2334324234234234234 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        学院派4234534
+                      </td>
+                      <td>大门</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>15910899604</td>
+                      <td class="title">
+                        李武 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        7673889998938293 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        测试小区2栋3单元501房间 #3
+                      </td>
+                      <td>大门 / 里门</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>15910899603</td>
+                      <td class="title">
+                        李四 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        767683874747744 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        测试小区2栋3单元501房间 #3
+                      </td>
+                      <td>大门 / 里门</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>15910899602</td>
+                      <td class="title">
+                        张三 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        2343234234234 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        测试小区2栋3单元501新房间
+                      </td>
+                      <td>大门 / 里门</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>15910899501</td>
+                      <td class="title">
+                        宋先生 <br>
+                        昵称：
+                      </td>
+                      <td>
+                        440102198005100035 <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        学院派5单元1003主卧
+                      </td>
+                      <td>大门 / 里门</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>15910899101</td>
+                      <td class="title">
+                        <br>
+                        昵称：
+                      </td>
+                      <td>
+                        <br>
+                        idcard_uid：
+                      </td>
+                      <td>
+                        学院派3栋105
+                      </td>
+                      <td>大门</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <el-pagination background layout="total, prev, pager, next, jumper"   :total="totalCount"></el-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- <button onclick="topFunction()" id="gotop" title="Go to top"></button> -->
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <script src="public/axios-0.16.2/axios.min.js"></script>
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <script type="text/javascript">
+  var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        dialogLoading: false,
+        currentMenu: 'livers',
+        valleys: [],
+        livers: [],
+        totalCount: 1,
+        currentPage: 1,
+        searchParams: {
+          valley_id: '',
+        },
+      },
+      watch: {
+        searchParams: {
+          handler: function (val, oldVal) { this.search() },
+          deep: true
+        }
+      },
+      methods: {
+        
+
+      },
+      mounted: function () {
+        
+      }
+    })
+  </script>
+</body>
+</html>

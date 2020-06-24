@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top"><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item "><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item "><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item"><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="detail_panel me">
+              <el-tabs v-model="activeName" v-loading="loading">
+                <el-tab-pane label="个人信息" name="info">
+                  <el-form label-width="80px" class="me-ruleForm">
+                    <el-form-item label="姓名">
+                      <el-input >业主</el-input>
+                    </el-form-item>
+                    <el-form-item class="sex_item" label="性别">
+                      <el-radio-group v-model="sex">
+                        <el-radio :label="0">男</el-radio>
+                        <el-radio :label="1">女</el-radio>
+                      </el-radio-group>
+                    </el-form-item>
+                    <el-form-item>
+                      <el-button class="new_house_btn" type="primary" @click="">保存</el-button>
+                    </el-form-item>
+                  </el-form>
+                </el-tab-pane>
+
+                <el-tab-pane label="手机号码" name="phone">
+                  <el-form  label-width="80px" class="me-ruleForm">
+                    <el-form-item label="新手机号">
+                      <el-input v-model="phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="验证码" >
+                      <div class="login_input_box" style="margin-left: 30px;">
+                        <input id="code" name="code"  type="text" placeholder="短信验证码">
+                        
+                       <!--  <countdown :auto-start="false" ref="countdown" > -->
+                        <button type="button" class="text_btn" @click.prevent="" :disabled="countdownSeconds > 0" :class="{ 'pure-button-disabled': countdownSeconds > 0 }" >
+                          <label>获取验证码</label>
+                        </button>
+                      </div>
+                    </el-form-item>
+                    <el-form-item>
+                      <el-button class="new_house_btn" type="primary" @click="">保存</el-button>
+                    </el-form-item>
+                  </el-form>
+                </el-tab-pane>
+
+                <el-tab-pane label="关于懒租" name="about" class="about_tab">
+                  <h3>懒租，城市智能物业</h3>
+                  <p>懒租智能公寓管理云平台（下称懒租平台）专注城市公寓租赁、政府廉租房托管市场，将租客、公寓业主、第三方服务商，第三方租房发布频道资源统一管理，以移动互联的三端产品（PC运营客户端+微信公众号+支撑云服务）为依托，通过Iot智能设备，把系统控制管理功能延伸至门禁、水电等物理设备上，基于“互联网+”实现租赁房屋的线上远程监管，实现业务流、信息流、资金流的全面有效管控。</p>
+                </el-tab-pane>
+              </el-tabs>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <script src="public/axios-0.16.2/axios.min.js"></script>
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <script type="text/javascript">
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        currentMenu: 'me',
+        activeName: 'info',
+        nickname: "业主",
+        sex: 0,
+        phone: "",
+        code: "",
+        loading: false,
+        countdownSeconds: 0
+      },
+
+      // methods: {
+      //   submitInfo: function(){
+      //     if ( !this.nickname ) {
+      //       pageapp.$alert('姓名及姓别为必填项', '错误', {type: 'error', center: true})
+      //       return false
+      //     }
+      //     pageapp.loading = true
+      //     axios.put("/dashboard/update_setting", {nickname: this.nickname, sex: this.sex}).then(function (response) {
+      //       pageapp.loading = false;
+      //       if (response.data.success) {
+      //         pageapp.$message('修改信息成功')
+      //       }else{
+      //         pageapp.$message({showClose: true, type: 'error', message: response.data.msg});
+      //       }
+      //       pageapp.loading = false
+      //     }).catch(function (response) { alert(response) })
+      //   },
+      //   submitPhone: function(){
+      //     if ( !this.phone || !this.code ) {
+      //       pageapp.$alert('手机号及验证码为必填项', '错误', {type: 'error', center: true})
+      //       return false
+      //     }
+      //     pageapp.loading = true
+      //     axios.put("/dashboard/update_phone", {phone: this.phone, code: this.code}).then(function (response) {
+      //       pageapp.loading = false;
+      //       if (response.data.success) {
+      //         pageapp.$message('修改手机号成功')
+      //       }else{
+      //         pageapp.$message({showClose: true, type: 'error', message: response.data.data});
+      //       }
+      //       pageapp.loading = false
+      //     }).catch(function (response) { alert(response) })
+      //   },
+      //   sendSmsCode: function () {
+      //     if (this.phone && !this.$v.phone.$invalid){
+      //       this.$refs.countdown.init();
+      //       this.$refs.countdown.start();
+      //       axios.post("/base/send_sms_code", {phone: this.phone, kind: "login"}).then(function (response) {
+      //           if (response.data.success) {
+      //             pageapp.$message({showClose: true, type: 'success', message: response.data.msg});
+      //           }else{
+      //             pageapp.$message({showClose: true, type: 'error', message: response.data.msg});
+      //           }
+      //       }).catch(function (error) {
+      //           // error callback
+      //           pageapp.$message({showClose: true, type: 'error', message: "程序出错啦，麻烦您联系客服"});
+      //       });
+      //     }else{
+      //       this.$message.error('请先填写电话号码');
+      //     }
+      //   },
+      //   onCountdownProgress: function (data) {
+      //     this.countdownSeconds = data.seconds
+      //   }
+      // },
+      // validations: {
+      //   phone: {
+      //     required: validators.required,
+      //     minLength: validators.minLength(11),
+      //     maxLength: validators.maxLength(20)
+      //   },
+      //   code: {
+      //     required: validators.required,
+      //     minLength: validators.minLength(4),
+      //     maxLength: validators.maxLength(4)
+      //   }
+      // },
+    })
+  </script>
+  </body>
+  </html>

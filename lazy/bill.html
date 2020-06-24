@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+  <style type="text/css">
+    /* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      -webkit-animation: chartjs-render-animation 0.001s;
+      animation: chartjs-render-animation 0.001s;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top "><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item"><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item"><a href="tenant.html" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="overview_panel">
+              <ul class="overview_text">
+                <h2>收支概况</h2>
+                <li class="text_box">
+                  <p>本月账单数</p>
+                  <h4 class="number">12</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月待支付</p>
+                  <h4 class="number">12</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月收入</p>
+                  <h4 class="number">¥ 0</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月预计收入</p>
+                  <h4 class="number">¥ 57570</h4>
+                </li>
+              </ul>
+              <div class="overview_chart">
+                <h2>按月收入曲线图</h2>
+                <div class="chart_box" style="width: 100%; height: 150px;">
+                  <canvas id="incomeChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="detail_panel">
+              <div class="panel_title_box">
+                <h2>收支账单</h2>
+                <el-button class="new_house_btn" type="primary" @click="newBillDialogVisible = true">创建自定义账单</el-button>
+              </div>
+              <div class="conditions_box">
+                <div>
+                  <el-select v-model="searchParams.bill_type" placeholder="类型">
+                    <el-option label="类型" value=""></el-option>
+                    <el-option label="房租" value="rent"></el-option>
+                    <el-option label="服务费" value="service"></el-option>
+                    <el-option label="自定义" value="custom"></el-option>
+                  </el-select>
+                  <el-select v-model="searchParams.valley_id" placeholder="小区">
+                    <el-option label="全部小区" value=""></el-option>
+                    <el-option v-for="valley in valleys" :key="valley.id" :label="valley.title" :value="valley.id"></el-option>
+                  </el-select>
+                  <el-date-picker v-model="searchParams.date_range" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="创建日期(起)" end-placeholder="创建日期(止)" :picker-options="quickDateRangeOptions" style="width: 270px;"></el-date-picker>
+                </div>
+              </div>
+              <div class="service_content_box">
+                <table class="detail_table" v-loading="loading">
+                  <tbody class="thead">
+                    <tr>
+                      <th width="150">支付状态</th>
+                      <th>房屋</th>
+                      <th width="80">资金流向</th>
+                      <th width="120">金额</th>
+                      <th width="80">类型</th>
+                      <th width="60">操作</th>
+                    </tr>
+                  </tbody>
+                  <tbody class="tbody">
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4234534 房间 #1 <br>
+                        -
+                      </td>
+                      <td>支出</td>
+                      <td class="money">¥ 2</td>
+                      <td>服务费</td>
+                      <td>
+                        <!---->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 5单元1003 主卧 <br>
+                        -
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 1</td>
+                      <td>电费</td>
+                      <td>
+                        <!---->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 5单元1003 主卧 <br>
+                        -
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 10</td>
+                      <td>电费</td>
+                      <td>
+                        <!---->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 主卧 <br>
+                        -
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 8</td>
+                      <td>水费</td>
+                      <td>
+                        <!---->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 主卧 <br>
+                        -
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 8</td>
+                      <td>水费</td>
+                      <td>
+                        <!---->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4单元5002 xxxxx <br>
+                        2019-02-10 - 2019-02-15
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 550</td>
+                      <td>房租</td>
+                      <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4单元5002 xxxxx <br>
+                        2018-11-10 - 2019-02-10
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 9900</td>
+                      <td>房租</td>
+                      <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4单元5002 xxxxx <br>
+                        2018-08-10 - 2018-11-10
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 9900</td>
+                      <td>房租</td>
+                      <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4单元5002 xxxxx <br>
+                        2018-05-10 - 2018-08-10
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 12900</td>
+                      <td>房租</td>
+                      <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                    </tr>
+                    <tr>
+                      <td class="title">未支付<br></td>
+                      <td>
+                        市辖区 - 学院派 4单元5002 次卧 <br>
+                        2018-11-24 - 2018-12-19
+                      </td>
+                      <td>收入</td>
+                      <td class="money">¥ 2750</td>
+                      <td>房租</td>
+                      <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <el-pagination background layout="total, prev, pager, next, jumper"  :current-page.sync="currentPage" :total="totalCount"></el-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- <button onclick="topFunction()" id="gotop" title="Go to top"></button> -->
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <script src="public/axios-0.16.2/axios.min.js"></script>
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <link href="public/v-calendar-0.9.5/v-calendar.min.css" rel="stylesheet">
+  <script src="public/v-calendar-0.9.5/v-calendar.min.js"></script>
+  <script type="text/javascript">
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        dialogLoading: false,
+        currentMenu: 'bills',
+        regionData: regionDataPlus,
+        billDialogVisible: false,
+        valleys: [],
+        bills: [],
+        newBillDialogVisible: false,
+        newBill: { bill_type: 'custom' },
+        candidateHouses: [],
+        showChooseHouseDialogVisible: false,
+        choosedHouseTitle: "",
+        sendRemindDialogVisible: false,
+        quickDateRangeOptions: {
+        },
+        totalCount: 1,
+        currentPage: 1,
+        searchParams: {
+          bill_type: '',
+          valley_id: '',
+          date_range: [],
+        },
+        searchHouseQ: ""
+      },
+      watch: {
+        searchParams: {
+          // handler: function(val, oldVal) { this.search() },
+          // deep: true
+        }
+      },
+      methods: {
+
+        reminder: function() {
+          this.$confirm('将向用户发送催缴短信, 是否继续?', '提示', { type: 'warning' }).then(function(response) {
+            pageapp.$message('催缴短信已发送')
+          }).catch(function(response) { return false })
+        },
+
+      },
+      mounted: function() {
+      }
+    })
+
+    Chart.defaults.global.legend.display = false;
+    // Chart.defaults.global.tooltips.enabled = false;
+    var ctx = document.getElementById('incomeChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+          labels: ["12月", "1月", "2月", "3月", "4月", "5月"],
+          datasets: [{
+            displayLegend: false,
+            backgroundColor: 'rgba(255, 99, 132, .1)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            data: [3300, 0, 550, 27269, 19826, 57597],
+          }]
+        },
+
+        // Configuration options go here
+        options: {
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
+            }
+          }
+        }
+      });
+  </script>
+</body>
+</html>

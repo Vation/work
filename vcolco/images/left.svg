@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="98px" viewBox="0 0 63 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>left</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M113.338333,353.614291 L76.6284265,389.515886 C76.2263729,389.907361 76,390.441819 76,390.999578 C76,391.557336 76.2263729,392.091795 76.6284265,392.48327 L113.338333,428.385709 C114.179553,429.204764 115.530389,429.204764 116.371609,428.385709 C116.773637,427.994306 117,427.459918 117,426.902228 C117,426.344538 116.773637,425.81015 116.371609,425.418747 L81.1791954,391.000211 L116.371609,356.581253 C116.77353,356.189794 116.999819,355.655426 116.999819,355.097772 C116.999819,354.540118 116.77353,354.005751 116.371609,353.614291 C115.530389,352.795236 114.179553,352.795236 113.338333,353.614291 Z" id="path-1"></path>
+        <filter x="-43.9%" y="-23.7%" width="187.8%" height="147.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV" transform="translate(-65.000000, -342.000000)">
+            <g id="left">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top"><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item"><a href="tenant.html" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item"><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="detail_panel">
+              <div class="panel_title_box">
+                <h2>收支账单</h2>
+                <el-button class="new_house_btn" type="primary" @click="newValleyDialogVisible = true">创建小区</el-button>
+              </div>
+
+              <div class="service_content_box" >
+                <table class="detail_table">
+                  <tbody class="thead">
+                    <tr>
+                      <th width="150">ID</th>
+                      <th width="180">城市</th>
+                      <th>小区名称</th>
+                      <th width="120">操作</th>
+                    </tr>
+                  </tbody>
+                  <tbody class="tbody">
+                    <tr>
+                      <td>1</td>
+                      <td>市辖区</td>
+                      <td class="title">学院派</td>
+                      <td>
+                        <a href="javascript:;"  @click="showEditValley()">修改</a> /
+                        <a href="javascript:;" @click="deleteValley()">删除</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>深圳市</td>
+                      <td class="title">南山小区</td>
+                      <td>
+                        <a href="javascript:;" @click="showEditValley()">修改</a> /
+                        <a href="javascript:;" @click="deleteValley()">删除</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>秦皇岛市</td>
+                      <td class="title">测试小区</td>
+                      <td>
+                        <a href="javascript:;" @click="showEditValley()">修改</a> /
+                        <a href="javascript:;" @click="deleteValley()">删除</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <div class="el-loading-mask" style="display: none;">
+                    <div class="el-loading-spinner">
+                      <svg viewBox="25 25 50 50" class="circular">
+                        <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                </table>
+              </div>
+              <el-pagination background layout="total, prev, pager, next, jumper" @current-change="getValleys" :current-page.sync="currentPage" :total="totalCount"></el-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+      <el-dialog class="rent_dialog house" title="修改小区信息" :visible.sync="editValleyDialogVisible">
+        <div class="house_content" v-loading="dialogLoading">
+          <table class="form_table">
+            <thead>
+              <tr>
+                <th width="110"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label>地址</label></td>
+                <td>
+                  <el-input value="南山路 15 号" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>小区名称</label></td>
+                <td>
+                  <el-input value="南山小区" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>物业联系方式</label></td>
+                <td>
+                  <el-input value="82565602" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>周边配套</label></td>
+                <td>
+                  <el-input type="textarea" :rows="2" placeholder="请输入周边配套信息" v-model="editValley.surrounding" class="big_input"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>小区简介</label></td>
+                <td>
+                  <el-input type="textarea" :rows="2" placeholder="请输入小区简介" v-model="editValley.description" class="big_input"></el-input>
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button class="" type="" @click="editValleyDialogVisible = false" :disabled="dialogLoading">关闭</el-button>
+          <el-button class="submit_btn" type="primary" @click="updateValley" :disabled="dialogLoading">提交修改</el-button>
+        </div>
+      </el-dialog>
+      <el-dialog class="rent_dialog house" title="录入新小区" :visible.sync="newValleyDialogVisible">
+        <div class="house_content" v-loading="dialogLoading">
+          <table class="form_table">
+            <thead>
+              <tr>
+                <th width="110"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label>省市区</label></td>
+                <td>
+                  <el-cascader size="large" :options="regionData" :props="{value: 'label'}" v-model="newValley.region" placeholder="省市区" style="width: 100%;"></el-cascader>
+                </td>
+              </tr>
+              <tr>
+                <td><label>地址</label></td>
+                <td>
+                  <el-input v-model="newValley.location" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>小区名称</label></td>
+                <td>
+                  <el-input v-model="newValley.title" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>物业联系方式</label></td>
+                <td>
+                  <el-input v-model="newValley.contact" placeholder=""></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>周边配套</label></td>
+                <td>
+                  <el-input type="textarea" :rows="2" placeholder="请输入周边配套信息" v-model="newValley.surrounding" class="big_input"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td><label>小区简介</label></td>
+                <td>
+                  <el-input type="textarea" :rows="2" placeholder="请输入小区简介" v-model="newValley.description" class="big_input"></el-input>
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button class="" type="" @click="cleanForm" :disabled="dialogLoading">清空</el-button>
+          <el-button class="submit_btn" type="primary" @click="createValley" :disabled="dialogLoading">提交</el-button>
+        </div>
+      </el-dialog>
+    </div>
+  </main>
+  <!-- <button onclick="topFunction()" id="gotop" title="Go to top"></button> -->
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <!-- <script src="public/axios-0.16.2/axios.min.js"></script> -->
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <script type="text/javascript">
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        dialogLoading: false,
+        currentMenu: 'valleys',
+        regionData: regionDataPlus,
+        valleys: [],
+        newValleyDialogVisible: false,
+        newValley: {},
+        currentValleyIndex: '',
+        editValleyDialogVisible: false,
+        editValley: {},
+        totalCount: 1,
+        currentPage: 1
+      },
+      methods: {
+        cleanForm: function(){
+          pageapp.newValley = {}
+        },
+
+        cleanCurrent: function(done){
+          this.cleanForm()
+          done();
+        },
+
+        getValleys: function() {
+          this.loading = true
+          // axios.get("/hp/valleys").then(function (response) {
+          //   pageapp.loading = false
+          //   if (response.data.data.valleys.length) {
+          //     pageapp.valleys = response.data.data.valleys
+          //   }
+          // })
+        },
+
+        createValley: function(){
+          // 地区选择器无法双向同步，在这里最后获取一下组件的值
+          this.newValley.province = this.newValley.region[0]
+          this.newValley.city = this.newValley.region[1]
+          this.newValley.area = this.newValley.region[2]
+          if ( !this.newValley.title || !this.newValley.area || this.newValley.area == "全部") {
+            pageapp.$alert('所在省市区、小区名称为必填项', '错误', {type: 'error', center: true})
+            return false
+          }
+          
+          pageapp.dialogLoading = true
+          axios.post("/hp/valleys", pageapp.newValley).then(function (response) {
+            pageapp.dialogLoading = false;
+            if (response.data.success) {
+              pageapp.$message('添加小区成功')
+              pageapp.valleys.push(response.data.data)
+              pageapp.newValleyDialogVisible = false
+            }else{
+              pageapp.$message({showClose: true, type: 'error', message: response.data.msg});
+            }
+            pageapp.dialogLoading = false
+          }).catch(function (response) { alert(response) })
+        },
+
+        showEditValley: function(){
+          // pageapp.currentValleyIndex = valleyIndex
+          // pageapp.editValley = _.cloneDeep(pageapp.valleys[valleyIndex])
+          pageapp.editValleyDialogVisible = true
+        },
+
+        updateValley: function(){
+          pageapp.dialogLoading = true
+          axios.put("/hp/valleys/" + pageapp.editValley.id, pageapp.editValley).then(function (response) {
+            pageapp.dialogLoading = false;
+            if (response.data.success) {
+              pageapp.editValleyDialogVisible = false
+              pageapp.$message('修改小区成功')
+              pageapp.valleys[pageapp.currentValleyIndex] = response.data.data
+            }else{
+              pageapp.$message({showClose: true, type: 'error', message: response.data.msg});
+            }
+            pageapp.dialogLoading = false
+          }).catch(function (response) { alert(response) })
+        },
+
+        deleteValley: function(valleyIndex){
+          pageapp.$confirm('此操作将删除该小区, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(function (response) {
+            // axios.delete("/hp/valleys/" + pageapp.valleys[valleyIndex].id).then(function (response) {
+            //   if (response.data.success) {
+            //     pageapp.$message('删除小区成功')
+            //     pageapp.valleys.splice(valleyIndex, 1)
+            //   }else{
+            //     pageapp.$message({showClose: true, type: 'error', message: response.data.msg});
+            //   }
+            // })
+          })
+        },
+
+      },
+      mounted: function () {
+        this.getValleys()
+      }
+    })
+  </script>
+</body>
+</html>

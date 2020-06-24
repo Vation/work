@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+  <title>
+    Vation
+  </title>
+  <meta property="og:type" content="website" /> 
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,700i,800" rel="stylesheet"> -->
+  <link rel="stylesheet" media="screen" href="lib/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1534136_tlejimga9jc.css">
+  <link rel="stylesheet" href="lib/style.css">
+  <!-- import element CSS -->
+  <!-- <link rel="stylesheet" href="<%= Setting.jscdn %>/element-ui@2.9.1/lib/theme-chalk/index.css">  -->
+</head>
+<body>
+  <div id="shinning">
+    <div class="navigation" id="nav">
+      <p class="time" id="time">{{ time }}</p>
+      <i class="yimi yi_wifi"></i>
+      <p id="title" class="nav_title" style="margin-top:44px">闪电报名</p>
+    </div>
+     <div class="container" class="container" style="margin-top: 88px; margin-bottom: 83px;">
+      <el-scrollbar>
+    <mt-tab-container v-model="selected" >
+      <mt-tab-container-item id="home">
+        <div class="banner_swipe_box">
+          <mt-swipe :auto="2000">
+            <mt-swipe-item>
+              <img class="slide-image" mode="widthFix" src="https://dev.uihubcdn.com/baoming_b1.jpg" />
+            </mt-swipe-item>
+            <mt-swipe-item>
+              <img class="slide-image" mode="widthFix" src="https://dev.uihubcdn.com/baoming_b1.jpg" />
+            </mt-swipe-item>
+            <mt-swipe-item>
+              <img class="slide-image" mode="widthFix" src="https://dev.uihubcdn.com/baoming_b1.jpg" />
+            </mt-swipe-item>
+          </mt-swipe>
+        </div>
+        <div class="index_box">
+          <h4>简洁高效的报名助手</h4>
+          <p>适用于体育训练营、培训班、组织活动等场景</p>
+          <a href="#">创建一个报名</a>
+        </div>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="list">
+        <div class="event_box">
+          <a href="#" class="event_item">
+            <div class="item_info">
+              <p>羽毛球高级班</p>
+              <p class="status">进行中</p> 
+            </div>
+            <p class="event_time">01月31日 (周四) 20:00</p>
+            <p class="local"><i class="yimi yi_location"></i><span>海淀体育馆</span></p>
+            <div class="booker_box">
+              <div class="booker">
+                <div class="bol">
+                  <i class="yimi yi_joined"></i>
+                  <p>已参加</p>
+                </div>
+                <img src="lib/images/avt.svg" alt="" class="bol_avt">
+              </div>
+              <p class="count">
+                <span>1 人参加</span>
+                <i class="yimi yi_right sml"></i>
+              </p>
+            </div>
+          </a>
+          <a href="#" class="event_item">
+            <div class="item_info">
+              <p>羽毛球高级班</p>
+              <p class="status">进行中</p> 
+            </div>
+            <p class="event_time">01月31日 (周四) 20:00</p>
+            <p class="local"><i class="yimi yi_location"></i><span>海淀体育馆</span></p>
+            <div class="booker_box">
+              <div class="booker">
+                <div class="bol">
+                  <i class="yimi yi_joined"></i>
+                  <p>已参加</p>
+                </div>
+                <img src="lib/images/avt.svg" alt="" class="bol_avt">
+              </div>
+              <p class="count">
+                <span>1 人参加</span>
+                <i class="yimi yi_right sml"></i>
+              </p>
+            </div>
+          </a>
+          <a href="#" class="event_item">
+            <div class="item_info">
+              <p>羽毛球高级班</p>
+              <p class="status">进行中</p> 
+            </div>
+            <p class="event_time">01月31日 (周四) 20:00</p>
+            <p class="local"><i class="yimi yi_location"></i><span>海淀体育馆</span></p>
+            <div class="booker_box">
+              <div class="booker">
+                <div class="bol">
+                  <i class="yimi yi_joined"></i>
+                  <p>已参加</p>
+                </div>
+                <img src="lib/images/avt.svg" alt="" class="bol_avt">
+              </div>
+              <p class="count">
+                <span>1 人参加</span>
+                <i class="yimi yi_right sml"></i>
+              </p>
+            </div>
+          </a>
+          <a href="#" class="event_item">
+            <div class="item_info">
+              <p>羽毛球高级班</p>
+              <p class="status">进行中</p> 
+            </div>
+            <p class="event_time">01月31日 (周四) 20:00</p>
+            <p class="local"><i class="yimi yi_location"></i><span>海淀体育馆</span></p>
+            <div class="booker_box">
+              <div class="booker">
+                <div class="bol">
+                  <i class="yimi yi_joined"></i>
+                  <p>已参加</p>
+                </div>
+                <img src="lib/images/avt.svg" alt="" class="bol_avt">
+              </div>
+              <p class="count">
+                <span>1 人参加</span>
+                <i class="yimi yi_right sml"></i>
+              </p>
+            </div>
+          </a>
+          <a href="#" class="event_item">
+            <div class="item_info">
+              <p>羽毛球高级班</p>
+              <p class="status">进行中</p> 
+            </div>
+            <p class="event_time">01月31日 (周四) 20:00</p>
+            <p class="local"><i class="yimi yi_location"></i><span>海淀体育馆</span></p>
+            <div class="booker_box">
+              <div class="booker">
+                <div class="bol">
+                  <i class="yimi yi_joined"></i>
+                  <p>已参加</p>
+                </div>
+                <img src="lib/images/avt.svg" alt="" class="bol_avt">
+              </div>
+              <p class="count">
+                <span>1 人参加</span>
+                <i class="yimi yi_right sml"></i>
+              </p>
+            </div>
+          </a>
+        </div>
+
+      </mt-tab-container-item>
+      <mt-tab-container-item id="me">
+        <div class="user_box">
+          <img src="lib/images/avt.svg" alt="" class="user_avt">
+          <p style="font-weight: 600;">Vation</p>
+        </div>
+        <div class="handle_list_box">
+          <a href="#" class="handle_item">
+            <i class="yimi yi_security"></i>
+            <p>填写真实姓名</p>
+            <i class="yimi yi_right arr"></i>
+          </a>
+          <a href="#" class="handle_item">
+            <i class="yimi yi_question"></i>
+            <p>常见问题</p>
+            <i class="yimi yi_right arr"></i>
+          </a>
+          <a href="#" class="handle_item">
+            <i class="yimi yi_support"></i>
+            <p>联系客服</p>
+            <i class="yimi yi_right arr"></i>
+          </a>
+        </div>
+      </mt-tab-container-item>
+    </mt-tab-container>
+    </el-scrollbar>
+    </div>
+    
+    <div class="tabbar">
+      <mt-tabbar v-model="selected" class="item_box">
+        <mt-tab-item id="home" class="tabbar_item" onclick="home()">
+          <i class="yimi yi_index"></i>
+          <p>我发起的</p>
+        </mt-tab-item>
+        <mt-tab-item id="list" class="tabbar_item" onclick="list()">
+          <i class="yimi yi_history"></i>
+          <p>我参加的</p>
+        </mt-tab-item>
+        <mt-tab-item id="me" class="tabbar_item" onclick="me()">
+          <i class="yimi yi_my"></i>
+          <p>我</p>
+        </mt-tab-item>
+      </mt-tabbar>
+      <div class="handlebar"></div>
+    </div>
+</div>
+<script type="text/javascript" src="lib/vue-2.5.13/vue.js"></script>
+<script src="lib/element-2.2.0/index.js"></script>
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script type="text/javascript">
+  var shinning = new Vue({
+    el: '#shinning',
+    data: {
+      time: '',
+      selected: 'home',
+      actived: '1'
+    }
+  });
+  var timerID = setInterval(updateTime, 1000);
+  updateTime();
+  function updateTime() {
+      var cd = new Date();
+      shinning.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2);
+  };
+  function zeroPadding(num, digit) {
+      var zero = '';
+      for(var i = 0; i < digit; i++) {
+          zero += '0';
+      }
+      return (zero + num).slice(-digit);
+  };
+  function home(){
+    document.getElementById("title").innerHTML="闪电报名";
+    document.getElementById("nav").style.backgroundColor="#F2F2F2";
+  }
+   function list(){
+    document.getElementById("title").innerHTML="我参加的";
+    document.getElementById("nav").style.backgroundColor="#F2F2F2";
+  }
+   function me(){
+    document.getElementById("title").innerHTML="我";
+    document.getElementById("nav").style.backgroundColor="#FFF";
+  }
+</script>
+</body>
+</html>

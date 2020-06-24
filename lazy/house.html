@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top"><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item "><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item"><a href="tenant.html" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item"><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="overview_panel">
+              <ul class="overview_text">
+                <h2>房屋概况</h2>
+                <li class="text_box">
+                  <p>房屋总数</p>
+                  <h4 class="number">7</h4>
+                </li>
+                <li class="text_box">
+                  <p>房间总数</p>
+                  <h4 class="number">23</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月应收</p>
+                  <h4 class="number">¥ 125770</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月应收未收</p>
+                  <h4 class="number">¥ 125770</h4>
+                </li>
+              </ul>
+              <div class="overview_chart">
+                <h2>最近六个月房租收入</h2>
+                <div class="chart_box" style="width: 100%; height: 150px;">
+                  <canvas id="incomeChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="detail_panel">
+              <div class="panel_title_box">
+                <h2>租控管理</h2>
+                <el-button class="new_house_btn" type="primary" @click="newHouseDialog()">录入物业</el-button>
+              </div>
+              <div class="rent_content_box">
+                <div class="community_list_box">
+                  <div class="city_box">
+                    <el-cascader size="large" :options="regionData" :props="{value: 'label'}" v-model="searchParams.selected_region" placeholder="省市区"></el-cascader>
+                  </div>
+                  <ul class="community_list">
+                    <li class="community selected" >所有小区</li>
+                    <li class="community">学院派</li>
+                    <li class="community">南山小区</li>
+                  </ul>
+                  <a href="javascript:;" @click="newValleyDialogVisible = true">新建</a>
+                </div>
+                <div class="house_list">
+                  <ul class="house_box" @click="showHouse()">
+                    <div class="el-loading-mask" style="display: none;">
+                      <div class="el-loading-spinner">
+                        <svg viewBox="25 25 50 50" class="circular">
+                          <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+                        </svg>
+                      </div>
+                    </div>
+                    <li class="house_item">
+                      <div class="house_info" @click="showHouse()">
+                        <p class="house_title">测试小区 2栋3单元501</p>
+                        <p class="house_status">整租 <span>[现有 4 人居住]</span></p>
+                        <p class="house_number">住宅编号：30000008</p>
+                      </div>
+                      <div class="room_info">
+                        <div class="room">
+                          <p>房间 #1</p>
+                          <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>房间 #2</p>
+                          <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>房间 #3</p>
+                          <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>新房间</p>
+                          <small>闲置</small>
+                        </div>
+                        <div class="room add"><i class="element-icons el-icon-iconfont-add"></i> <small>添加房间</small></div>
+                      </div>
+                      <div class="house_cover"></div>
+                    </li>
+                    <li class="house_item">
+                      <div class="house_info" @click="showHouse()">
+                        <p class="house_title">学院派 3栋105</p>
+                        <p class="house_status">整租 <span>[现有 1 人居住]</span></p>
+                        <p class="house_number">住宅编号：30000003</p>
+                      </div>
+                      <div class="room_info">
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>这是一个房间</p> <small>闲置</small>
+                        </div>
+                        <div class="room add"><i class="element-icons el-icon-iconfont-add"></i> <small>添加房间</small></div>
+                      </div>
+                      <div class="house_cover"></div>
+                    </li>
+                    <li class="house_item">
+                      <div class="house_info" @click="showHouse()">
+                        <p class="house_title">学院派 4234534</p>
+                        <p class="house_status">分租 <span>[现有 1 人居住]</span></p>
+                        <p class="house_number">住宅编号：30000007</p>
+                      </div>
+                      <div class="room_info">
+                        <div class="room">
+                          <p>房间 #1</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>房间 #2</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>房间 #3</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>房间 #4</p> <small>闲置</small>
+                        </div>
+                        <div class="room add"><i class="element-icons el-icon-iconfont-add"></i> <small>添加房间</small></div>
+                      </div>
+                      <div class="house_cover"></div>
+                    </li>
+                    <li class="house_item">
+                      <div class="house_info" @click="showHouse()">
+                        <p class="house_title">学院派 4单元5002</p>
+                        <p class="house_status">分租
+                          <!---->
+                        </p>
+                        <p class="house_number">住宅编号：30000005</p>
+                      </div>
+                      <div class="room_info">
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>xxxxx</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>针对性的房间</p> <small>闲置</small>
+                        </div>
+                        <div class="room add"><i class="element-icons el-icon-iconfont-add"></i> <small>添加房间</small></div>
+                      </div>
+                      <div class="house_cover" @click="showHouse()"></div>
+                    </li>
+                    <li class="house_item">
+                      <div class="house_info">
+                        <p class="house_title">学院派 5单元1003</p>
+                        <p class="house_status">分租 <span>[现有 1 人居住]</span></p>
+                        <p class="house_number">住宅编号：30000004</p>
+                      </div>
+                      <div class="room_info" @click="showHouse()">
+                        <div class="room">
+                          <p>主卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room">
+                          <p>次卧</p> <small>闲置</small>
+                        </div>
+                        <div class="room add"><i class="element-icons el-icon-iconfont-add"></i> <small>添加房间</small></div>
+                      </div>
+                      <div class="house_cover"></div>
+                    </li>
+                  </ul>
+                  <el-pagination background layout="total, prev, pager, next, jumper"  :page-size="5" :current-page.sync="currentPage" :total="totalCount"></el-pagination>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <el-dialog class="rent_dialog house" title="录入物业" :visible.sync="newHouseDialogVisible" :before-close="cleanCurrent">
+        <el-tabs v-model="currentActiveTab">
+          <el-tab-pane label="住宅详情" name="info">
+            <div v-loading="dialogLoading">
+              <table class="form_table">
+                <thead>
+                  <tr>
+                    <th width="60"></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><label>小区</label></td>
+                    <td>
+                       <el-select v-model="valleDrop" placeholder="请选择住宅所在小区" >
+                          <el-option v-for="item in valleys" :key="item.option" :label="item.label" :value="item.option"></el-option>
+                        </el-select>
+                      <a class="new_valley" href="javascript:;" @click="newValleyDialogVisible = true">新建小区</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>位置</label></td>
+                    <td>
+                      <el-input v-model="newHouse.title" placeholder="某栋某单元某房"></el-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>楼层</label></td>
+                    <td>
+                      <el-input v-model="newHouse.floors" class="small_input" placeholder=""><span slot="suffix">楼层</span></el-input>
+                      <div class="switch_box">
+                        <label class="switch_label">厨房</label>
+                        <el-switch v-model="newHouse.kitchens_count" :inactive-value="0" :active-value="1"></el-switch>
+                      </div>
+                      <div class="switch_box">
+                        <label class="switch_label">电梯</label>
+                        <el-switch v-model="newHouse.lifts_count" :inactive-value="0" :active-value="1"></el-switch>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>户型</label></td>
+                    <td>
+                      <el-input v-model="newHouse.rooms_count" class="mini_input" placeholder=""><span slot="suffix">室</span></el-input>
+                      <el-input v-model="newHouse.halls_count" class="mini_input" placeholder=""><span slot="suffix">厅</span></el-input>
+                      <el-input v-model="newHouse.bathrooms_count" class="mini_input" placeholder=""><span slot="suffix">卫</span></el-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>方式</label></td>
+                    <td>
+                      <el-switch v-model="newHouse.cut" inactive-text="整租" active-text="分租" :inactive-value="0" :active-value="1" inactive-color="#66B1FF"></el-switch>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>面积</label></td>
+                    <td>
+                      <el-input class="small_input left"  v-model="newHouse.area" placeholder=""><span slot="suffix">平</span></el-input>
+                      <label class="input_label">可用</label>
+                      <el-input class="small_input" v-model="newHouse.actual_area" placeholder=""><span slot="suffix">平</span></el-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>朝向</label></td>
+                    <td>
+                      <el-input class="small_input left" v-model="newHouse.orientation" placeholder=""><span slot="suffix">朝向</span></el-input>
+                      <label class="input_label">采暖</label>
+                      <el-select class="small_input" v-model="newHouse.heating" placeholder="供暖方式">
+                        <el-option value="集中供暖"></el-option>
+                        <el-option value="单独供暖"></el-option>
+                        <el-option value="无供暖"></el-option>
+                      </el-select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label>电价</label></td>
+                    <td>
+                      <el-input class="small_input left"  v-model="newHouse.power_rate" :placeholder="newHouse.final_power_rate"><span slot="suffix">元/度</span></el-input>
+                      <label class="input_label">水价</label>
+                      <el-input class="small_input" v-model="newHouse.water_rate" :placeholder="newHouse.final_water_rate"><span slot="suffix">元/平方</span></el-input>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="configuration_items">
+                <h4>房间配置</h4>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-bed"></i>
+                  <p>床</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-wardrobe"></i>
+                  <p>衣柜</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-chair"></i>
+                  <p>桌椅</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-TV"></i>
+                  <p>电视</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-refrigerator"></i>
+                  <p>冰箱</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-washing"></i>
+                  <p>洗衣机</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-conditioning"></i>
+                  <p>空调</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-heater"></i>
+                  <p>热水器</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-microwave"></i>
+                  <p>微波炉</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-heating"></i>
+                  <p>暖气</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-wifi"></i>
+                  <p>宽带</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-gas"></i>
+                  <p>天然气</p>
+                </el-checkbox>
+              </div>
+              <div class="house_form_item">
+                <label>备注</label>
+                <el-input type="textarea" :rows="2" placeholder="请输入附加信息" v-model="newHouse.remark" class="big_input">
+                </el-input>
+              </div>
+              <div slot="footer" class="dialog-footer create_box">
+                <el-button class="" type="" @click="newHouseDialogVisible = false" :disabled="dialogLoading">清空</el-button>
+                <el-button class="submit_btn" type="primary" @click="newHouseDialogVisible = false" :disabled="dialogLoading">提交</el-button>
+              </div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="智能硬件" name="devices">
+          </el-tab-pane>
+        </el-tabs>
+      </el-dialog>
+      <el-dialog class="houseDialog" title="住宅详情 - 测试小区2栋3单元502" :visible.sync="showHouseDialogVisible" :before-close="cleanCurrent">
+        <el-tabs v-model="currentActiveTab"  v-loading="dialogLoading">
+          <el-tab-pane label="住宅详情" name="info" class="tab_content">
+            <div v-if="!editHouseVisible">
+              <el-button class="edit_btn" type="" @click="editHouseVisible = true">编辑</el-button>
+              <table class="info_table">
+                <thead>
+                  <tr>
+                    <th width="60"></th>
+                    <th></th>
+                    <th width="60"></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><label>租赁方式</label></td>
+                    <td>整租</td>
+                    <td><label>住宅面积</label></td>
+                    <td>100 平</td>
+                  </tr>
+                  <tr>
+                    <td><label>可用面积</label></td>
+                    <td>80 平</td>
+                    <td><label>房间数量</label></td>
+                    <td>4 房 1 厅 1 卫 | 无厨房</td>
+                  </tr>
+                  <tr>
+                    <td><label>所在楼层</label></td>
+                    <td>5 层 | 无电梯</td>
+                    <td><label>住宅朝向</label></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><label>供暖方式</label></td>
+                    <td>集中供暖</td>
+                    <td><label>住宅备注</label></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><label>用电单价</label></td>
+                    <td>0.48 元/度</td>
+                    <td><label>用水单价</label></td>
+                    <td>1.7 元/度</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="configuration_items show" style="width: 540px;">
+                <div role="group" aria-label="checkbox-group" class="el-checkbox-group"><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="bed"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-bed"></i>
+                  <p>床</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled is-checked" aria-checked="true"><span aria-checked="mixed" class="el-checkbox__input is-disabled is-checked"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="wardrobe"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-wardrobe"></i>
+                  <p>衣柜</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="chair"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-chair"></i>
+                  <p>桌椅</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled is-checked" aria-checked="true"><span aria-checked="mixed" class="el-checkbox__input is-disabled is-checked"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="TV"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-TV"></i>
+                  <p>电视</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="refrigerator"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-refrigerator"></i>
+                  <p>冰箱</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="washing"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-washing"></i>
+                  <p>洗衣机</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="conditioning"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-conditioning"></i>
+                  <p>空调</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="heater"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-heater"></i>
+                  <p>热水器</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="microwave"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-microwave"></i>
+                  <p>微波炉</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="heating"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-heating"></i>
+                  <p>暖气</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="wifi"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-wifi"></i>
+                  <p>宽带</p>
+                  <!---->
+                </span></label><label role="checkbox" aria-disabled="true" class="el-checkbox config_checkbox is-disabled"><span aria-checked="mixed" class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" disabled="disabled" class="el-checkbox__original" value="gas"></span><span class="el-checkbox__label"><i class="element-icons el-icon-iconfont-gas"></i>
+                  <p>天然气</p>
+                  <!---->
+                </span></label></div>
+              </div>
+            </div>
+            <div v-if="editHouseVisible">
+              <div v-loading="dialogLoading">
+                <table class="form_table">
+                  <thead>
+                    <tr>
+                      <th width="60"></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><label>小区</label></td>
+                      <td>
+                        <el-select v-model="valleDrop" placeholder="请选择住宅所在小区" >
+                          <el-option v-for="item in valleys" :key="item.option" :label="item.label" :value="item.option"></el-option>
+                        </el-select>
+                        <a href="javascript:;" @click="newValleyDialogVisible = true">新建小区</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>位置</label></td>
+                      <td>
+                        <el-input value="4单元5002" placeholder="某栋某单元某房" ></el-input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>楼层</label></td>
+                      <td>
+                        <el-input value="5" class="small_input" placeholder=""><span slot="suffix">楼层</span></el-input>
+                        <div class="switch_box">
+                          <label class="switch_label">电梯</label>
+                          <el-switch v-model="liftEnable" ></el-switch>
+                        </div>
+                        <div class="switch_box">
+                          <label class="switch_label">厨房</label>
+                          <el-switch v-model="kitchenEnable"></el-switch>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>户型</label></td>
+                      <td>
+                        <el-input value="4" class="mini_input" placeholder="" disabled><span slot="suffix">室</span></el-input>
+                        <el-input value="2" class="mini_input" placeholder=""><span slot="suffix">厅</span></el-input>
+                        <el-input value="1" class="mini_input" placeholder=""><span slot="suffix">卫</span></el-input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>方式</label></td>
+                      <td>
+                        <el-switch v-model="rentMethod" inactive-text="整租" active-text="分租" inactive-color="#66B1FF" @change=""></el-switch>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>面积</label></td>
+                      <td>
+                        <el-input value="0" class="small_input left" placeholder=""><span slot="suffix">平</span></el-input>
+                        <label class="input_label">可用</label>
+                        <el-input value="0" class="small_input" placeholder=""><span slot="suffix">平</span></el-input>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>朝向</label></td>
+                      <td>
+                        <el-input v-model="editHouse.orientation" class="small_input left" placeholder=""><span slot="suffix">朝向</span></el-input>
+                        <label class="input_label">采暖</label>
+                        <el-select v-model="editHouse.heating" class="small_input" placeholder="供暖方式">
+                          <el-option value="集中供暖"></el-option>
+                          <el-option value="单独供暖"></el-option>
+                          <el-option value="无供暖"></el-option>
+                        </el-select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>电价</label></td>
+                      <td>
+                        <el-input v-model="editHouse.power_rate" class="small_input left" placeholder="0.48"><span slot="suffix">元/度</span></el-input>
+                        <label class="input_label">水价</label>
+                        <el-input v-model="editHouse.water_rate" class="small_input" placeholder="1.7"><span slot="suffix">元/立方</span></el-input>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="configuration_items">
+                <h4>房间配置</h4>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-bed"></i>
+                  <p>床</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-wardrobe"></i>
+                  <p>衣柜</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-chair"></i>
+                  <p>桌椅</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-TV"></i>
+                  <p>电视</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-refrigerator"></i>
+                  <p>冰箱</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-washing"></i>
+                  <p>洗衣机</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-conditioning"></i>
+                  <p>空调</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-heater"></i>
+                  <p>热水器</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-microwave"></i>
+                  <p>微波炉</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-heating"></i>
+                  <p>暖气</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-wifi"></i>
+                  <p>宽带</p>
+                </el-checkbox>
+                <el-checkbox class="config_checkbox">
+                  <i class="element-icons el-icon-iconfont-gas"></i>
+                  <p>天然气</p>
+                </el-checkbox>
+              </div>
+                <div class="house_form_item">
+                  <label>备注</label>
+                  <el-input type="textarea" :rows="2" placeholder="请输入附加信息" v-model="editHouse.remark" class="big_input">
+                  </el-input>
+                </div>
+                <div slot="footer" class="dialog-footer">
+                  <el-button class="" type="" @click="editHouseVisible = false" :disabled="dialogLoading">取消</el-button>
+                  <el-button class="submit_btn" type="primary" @click="editHouseVisible = false" :disabled="dialogLoading">修改</el-button>
+                  <el-button class="submit_btn" type="danger" @click="editHouseVisible = false" :disabled="dialogLoading">删除</el-button>
+                </div>
+              </div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="租房合同" name="contracts">
+            <div class="house_content">
+              <p v-if="currentHouse.cut">住宅类型为分租，请在各房间下新建租约</p>
+              <el-button v-if="!currentHouse.cut" class="submit_btn" type="primary" @click="newContractDialogVisible = true">新建住宅租约</el-button>
+              <div v-if="!currentHouse.cut && currentHouse.contracts[0] && currentHouse.contracts[0].running" class="info_box">
+                <h2>最近租约: {{currentHouse.contracts[0].start_date_word}}--{{currentHouse.contracts[0].end_date_word}}</h2>
+                <p><label>租金</label><span>{{currentHouse.contracts[0].rent_fee / 100}} 元/月</span></p>
+                <p><label>付款日</label><span>每月{{currentHouse.contracts[0].fee_day}}日</span></p>
+                <p><label>物业费</label><span>{{currentHouse.contracts[0].property_fee / 100}} 元/月</span></p>
+                <p><label>押金</label><span>{{currentHouse.contracts[0].pledge_fee / 100}} 元</span></p>
+                <p><label>租户</label><span>{{currentHouse.contracts[0].user.name}}</span></p>
+                <p><label>电话</label><span>{{currentHouse.contracts[0].user.phone}}</span></p>
+                <p><label>身份证</label><span>{{currentHouse.contracts[0].user.idcard}}</span></p>
+              </div>
+            </div>
+            <el-collapse class="contract_history">
+              <el-collapse-item>
+                <template slot="title">
+                  <p>历史合同（{{currentHouse.contracts.length}}）</p>
+                </template>
+                <table class="detail_table">
+                  <tbody class="thead">
+                    <tr>
+                      <th width="90">租约编号</th>
+                      <th width="90">住宅/房间</th>
+                      <th>起止日期</th>
+                      <th width="70">状态</th>
+                      <th width="106">金额（元）</th>
+                    </tr>
+                  </tbody>
+                  <tbody class="tbody">
+                    <tr v-for="(contract, contractIndex) in currentHouse.contracts" :key="contract.id">
+                      <td class="title">{{50000000 + contract.id}}</td>
+                      <td class="date">{{contract.room_id ? "分租房间" : "整套住宅"}}</td>
+                      <td class="date">
+                        {{contract.user.name}} <br>
+                        {{contract.start_date_word}} 至 {{contract.end_date_word}}
+                      </td>
+                      <td class="status end">{{contract.rent_status_word}}</td>
+                      <td class="money">{{contract.rent_fee / 100}}/月</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </el-collapse-item>
+            </el-collapse>
+          </el-tab-pane>
+          <el-tab-pane label="智能设备" name="devices">
+            <table class="detail_table">
+              <tbody class="thead">
+                <tr>
+                  <th width="45">ID</th>
+                  <th>设备类型</th>
+                  <th width="80">余额(度)</th>
+                  <th width="80">读数(度)</th>
+                  <th width="60">状态</th>
+                  <th width="220">操作</th>
+                </tr>
+              </tbody>
+              <tbody class="tbody">
+                <tr v-for="(device, deviceIndex) in currentHouse.devices" :key="device.id">
+                  <td class="title">{{device.id}}</td>
+                  <td class="title">
+                    {{device.kind_word}} ({{device.room ? device.room.title : "房屋"}}) <br>
+                    {{device.name}} 
+                  </td>
+                  <td>{{device.balance}}</td>
+                  <td>{{device.reading}}</td>
+                  <td>{{device.status_word}}</td>
+                  <td>
+                    <span v-if="device.kind == 'lock'">
+                      <a href="javascript:;" @click="ctrlLock(device.id, 'open')">远程开门</a> / 
+                    </span>
+                    <span v-if="device.kind == 'water' || device.kind == 'power'">
+                      <a href="javascript:;" @click="ctrlSwitch(device.id, '1')">开闸</a> / 
+                      <a href="javascript:;" @click="ctrlSwitch(device.id, '0')">关闸</a> /
+                    </span>
+                    <a href="javascript:;" @click="refreshDevice(deviceIndex, 'house')">刷新</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </el-tab-pane>
+          <el-tab-pane label="居住人/门禁" name="livers">
+            <table class="detail_table">
+              <tbody class="thead">
+                <tr>
+                  <th width="120">姓名</th>
+                  <th width="120">大门/里门</th>
+                  <th width="80">状态</th>
+                  <th width="300">操作</th>
+                </tr>
+              </tbody>
+              <tbody class="tbody">
+                <tr v-for="liver in currentHouse.livers" :key="liver.id" >
+                  <td class="title">{{liver.user.name}} <br> {{liver.user.phone}}</td>
+                  <td>大门 {{liver.room ? "+ " + liver.room.title : ""}}</td>
+                  <td>{{liver.status_word}}</td>
+                  <td>
+                    <a href="javascript:;" @click="ctrlLiver(liver.id,'disabled')">禁用</a> / 
+                    <a href="javascript:;" @click="ctrlLiver(liver.id,'live')">启用</a> / 
+                    <a href="javascript:;" @click="ctrlLiver(liver.id,'idcard')">激活身份证验证</a> /
+                    <a href="javascript:;" @click="deleteLiver(liver.id,'room')">删除</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <el-button class="submit_btn" type="primary" @click="newLiverDialogVisible = true">添加居住人</el-button>
+          </el-tab-pane>
+        </el-tabs>
+      </el-dialog>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <script src="public/axios-0.16.2/axios.min.js"></script>
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <script type="text/javascript">
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        dialogLoading: false,
+        currentMenu: 'houses',
+        currentActiveTab: 'info',
+        regionData: regionDataPlus,
+        valleys: [{ 
+          option: 'options1',
+          label: '海淀区 学院派'
+          }, {
+            option: 'options2',
+            label: '南山区 南山小区'
+          }, {
+            option: 'options3',
+            label: '山海关区 测试小区'
+          }],
+        newValleyDialogVisible: false,
+        newValley: {},
+        furnituresList: [{ "key": "bed", "name": "床" }, { "key": "wardrobe", "name": "衣柜" }, { "key": "chair", "name": "桌椅" }, { "key": "TV", "name": "电视" }, { "key": "refrigerator", "name": "冰箱" }, { "key": "washing", "name": "洗衣机" }, { "key": "conditioning", "name": "空调" }, { "key": "heater", "name": "热水器" }, { "key": "microwave", "name": "微波炉" }, { "key": "heating", "name": "暖气" }, { "key": "wifi", "name": "宽带" }, { "key": "gas", "name": "天然气" }],
+        houses: [],
+        rented: true,
+        idled: true,
+        currentHouseIndex: null,
+        currentHouse: { valley: {}, rooms: [], contracts: [] },
+        showHouseDialogVisible: false,
+        newHouseDialogVisible: false,
+        newHouse: { furnitures: [] },
+        editHouseVisible: false,
+        editHouse: {},
+        currentRoomIndex: null,
+        currentRoom: { contracts: [] },
+        showRoomDialogVisible: false,
+        newRoomDialogVisible: false,
+        newRoom: { furnitures: [] },
+        editRoomVisible: false,
+        editRoom: {},
+        newContractDialogVisible: false,
+        newContract: { months_count: 0, rent_fee: 0, property_fee: 0, pledge_fee: 0, prepay_days_count: 0, user: {} },
+        newLiverDialogVisible: false,
+        newLiver: {},
+        totalCount: 1,
+        currentPage: 1,
+        valleDrop: '海淀区 学院派',
+        searchParams: {
+          mine: false,
+          date_range: [],
+          selected_region: ["全部"]
+        },
+        liftEnable: true,
+        kitchenEnable: true,
+        rentMethod: true
+
+      },
+
+      watch: {
+        searchParams: {
+          handler: function(val, oldVal) {
+            this.search()
+          },
+          deep: true
+        },
+        'searchParams.selected_region': function(newVal, oldVal) {
+          if (newVal != oldVal) {
+            this.searchParams.valley_id = ''
+          }
+        }
+      },
+      methods: {
+        cleanForm: function() {
+          pageapp.newHouse = { furnitures: [] }
+          pageapp.newRoom = { furnitures: [] }
+          pageapp.newContract = { user: {} }
+        },
+
+        cleanCurrent: function(done) {
+          pageapp.currentHouseIndex = null
+          pageapp.currentRoomIndex = null
+          pageapp.currentHouse = { valley: {}, rooms: [], contracts: [] }
+          pageapp.currentRoom = { contracts: [] }
+          done();
+        },
+
+        showHouse: function() {
+          pageapp.showHouseDialogVisible = true
+        },
+
+        showRoom: function() {
+          pageapp.showRoomDialogVisible = true
+        },
+        newHouseDialog: function(){
+          pageapp.newHouseDialogVisible = true;
+        }
+      },
+      mounted: function() {
+            // this.getValleys()
+            // this.getHouses()
+          }
+        })
+    Chart.defaults.global.legend.display = false;
+    // Chart.defaults.global.tooltips.enabled = false;
+    var ctx = document.getElementById('incomeChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+
+      // The data for our dataset
+      data: {
+        labels: ["12月", "1月", "2月", "3月", "4月", "5月"],
+        datasets: [{
+          displayLegend: false,
+          backgroundColor: 'rgba(255, 99, 132, .1)',
+          borderColor: 'rgb(255, 99, 132)',
+          pointBackgroundColor: 'rgb(255, 99, 132)',
+          data: [0, 0, 0, 68875, 0, 125797],
+        }]
+      },
+
+      // Configuration options go here
+      options: {
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

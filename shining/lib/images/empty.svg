@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="170px" height="115px" viewBox="0 0 170 115" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="temp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5" transform="translate(1.000000, 0.000000)">
+            <path d="M72.48,74.48 C72.3354345,73.0244077 71.9073893,71.6111793 71.22,70.32 C67.1859615,73.8401332 66.0939705,79.6682217 68.58,84.41 C71.4138479,81.9286243 72.8677875,78.2266706 72.48,74.48 Z" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M71.12,70.33 C70.6388363,70.2374024 70.1499924,70.1905269 69.66,70.19 C65.87914,70.1210191 62.6983276,73.0079599 62.4016157,76.7777906 C62.1049038,80.5476212 64.7949031,83.8966357 68.54,84.42" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M53.82,51.9 C45.53,53.36 40.14,56.19 39.58,60.06 C38.97,64.31 44.33,68.94 53.3,72.83" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M114.11,80.59 C122.55,79.15 128.11,76.3 128.62,72.39 C129.13,68.86 125.53,65.07 119.17,61.66" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M83.12,76.83 L86.66,77.75" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M69.82,75.56 L70.56,75.76" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M69.22,78.98 L69.96,79.18" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M82.4,82.18 L86.05,82.52" id="Shape" stroke="#F4C1C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M96.48,80.46 C96.4415294,76.7856405 93.43441,73.8366945 89.76,73.87 L89.61,73.87 C87.6635775,76.1852116 86.6006596,79.1153218 86.61,82.14 C86.6061819,83.670089 86.880647,85.1881183 87.42,86.62 C88.178288,86.9026036 88.9807644,87.0482006 89.79,87.05 C93.4527368,87.0667009 96.4415404,84.122573 96.48,80.46 Z" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <ellipse id="Oval" stroke="#D6D6D6" stroke-width="2" cx="99.13" cy="45.6" rx="4.22" ry="4.14"></ellipse>
+            <ellipse id="Oval" stroke="#D6D6D6" stroke-width="2" cx="103.98" cy="66" rx="5.95" ry="5.83"></ellipse>
+            <ellipse id="Oval" stroke="#D6D6D6" stroke-width="2" cx="83.71" cy="90.45" rx="2.35" ry="2.3"></ellipse>
+            <path d="M85.48,30.13 C66.88,30.13 51.79,44.91 51.79,63.13 C51.7933962,65.1433548 51.9842195,67.1520217 52.36,69.13 C55.2992769,83.248479 66.8489991,93.9619641 81.1481914,95.8338338 C95.4473838,97.7057035 109.365617,90.3261614 115.84,77.44 C118.03916,72.9895592 119.18861,68.0941311 119.2,63.13 C119.2,44.9 104.12,30.13 85.48,30.13 Z" id="Shape" stroke="#D6D6D6" stroke-width="2"></path>
+            <path d="M62.37,76.13 C59.2868751,75.2057602 56.258675,74.1073282 53.3,72.84" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M39.58,60.06 C38.97,64.31 44.33,68.94 53.3,72.83" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M114.11,80.59 C122.55,79.15 128.11,76.3 128.62,72.39" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M114.11,80.59 C108.392379,81.4799241 102.602094,81.8148162 96.82,81.59" id="Shape" stroke="#F4C1C0" stroke-width="2"></path>
+            <path d="M114.11,113.93 L167.51,113.93" id="Shape" stroke="#D6D6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M94.05,113.93 L108.39,113.93" id="Shape" stroke="#D6D6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M85.43,113.93 L89.36,113.93" id="Shape" stroke="#D6D6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M0.7,113.93 L80.76,113.93" id="Shape" stroke="#D6D6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.2" transform="translate(19.000000, 2.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <circle id="Oval" cx="3.36" cy="60.18" r="2.67"></circle>
+                <circle id="Oval" cx="60.48" cy="3.05" r="2.67"></circle>
+                <circle id="Oval" cx="132.91" cy="75.47" r="2.67"></circle>
+            </g>
+            <path d="M11.46,31.88 L15.91,31.88" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M13.68,29.66 L13.68,34.11" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.5" transform="translate(35.000000, 46.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0.24,1.88 L2.49,1.88" id="Shape"></path>
+                <path d="M1.36,0.76 L1.36,3.01" id="Shape"></path>
+            </g>
+            <path d="M11.95,82.49 L16.14,82.49" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M14.04,80.4 L14.04,84.59" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.5" transform="translate(34.000000, 93.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0.41,2.79 L4.86,2.79" id="Shape"></path>
+                <path d="M2.63,0.57 L2.63,5.02" id="Shape"></path>
+            </g>
+            <path d="M147.95,103.97 L151.44,103.97" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M149.7,102.23 L149.7,105.72" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.5" transform="translate(34.000000, 11.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0.45,1.83 L2.7,1.83" id="Shape"></path>
+                <path d="M1.57,0.7 L1.57,2.95" id="Shape"></path>
+            </g>
+            <path d="M47.58,22.4 L51.77,22.4" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M49.67,20.3 L49.67,24.49" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.2" transform="translate(99.000000, 0.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0.88,2.59 L5.07,2.59" id="Shape"></path>
+                <path d="M2.97,0.5 L2.97,4.69" id="Shape"></path>
+            </g>
+            <path d="M132.24,15.8 L134.92,15.8" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M133.58,14.46 L133.58,17.14" id="Shape" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Group" opacity="0.2" transform="translate(152.000000, 53.000000)" stroke="#D6D6D6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0.56,2.79 L4.75,2.79" id="Shape"></path>
+                <path d="M2.66,0.69 L2.66,4.88" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

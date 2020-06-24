@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+  <style type="text/css">
+    /* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      -webkit-animation: chartjs-render-animation 0.001s;
+      animation: chartjs-render-animation 0.001s;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top menu-selected"><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item"><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item"><a href="tenant.html" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item"><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item"><a href="service.html" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="overview_panel">
+              <div class="overview_text">
+                <h2>物业运营概况</h2>
+                <div class="text_box">
+                  <p>房屋总数</p>
+                  <h4 class="number">7</h4>
+                </div>
+                <div class="text_box">
+                  <p>房间总数</p>
+                  <h4 class="number">23</h4>
+                </div>
+                <div class="text_box">
+                  <p>本月应收</p>
+                  <h4 class="number">¥ 125770</h4>
+                </div>
+                <div class="text_box">
+                  <p>本月应收未收</p>
+                  <h4 class="number">¥ 125770</h4>
+                </div>
+              </div>
+              <div class="overview_chart">
+                <h2>最近六个月房租收入</h2>
+                <div class="chart_box" style="width: 100%; height: 150px;">
+                  <canvas id="incomeChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="data_panel">
+              <h2>最近数据</h2>
+              <el-radio-group class="data_tab" v-model="dataTabItem">
+                <el-radio label="1" border><i class="element-icons el-icon-iconfont-income"></i>应收账单</el-radio>
+                <el-radio label="2" border><i class="element-icons el-icon-iconfont-payment"></i>应付账单</el-radio>
+                <el-radio label="3" border><i class="element-icons el-icon-iconfont-month"></i>本月未收账单</el-radio>
+                <el-radio label="4" border><i class="element-icons el-icon-iconfont-day"></i>三日到期账单</el-radio>
+                <el-radio label="5" border><i class="element-icons el-icon-iconfont-tenant"></i>租客信息</el-radio>
+                <el-radio label="6" border><i class="element-icons el-icon-iconfont-contract"></i>租赁合同</el-radio>
+              </el-radio-group>
+              <div class="data_nav">
+                <div class="timebox" id="timebox">
+                  <v-calendar :attributes='calendarAttrs' @dayclick='dayClicked'></v-calendar>  
+                </div>
+                <div class="timebox hidden_time" id="ie_timebox">
+                  <div data-v-bc55024c="" class="c-pane-container" style="background-color: rgb(250, 250, 250); border: 1px solid rgb(218, 218, 218);">
+                    <div data-v-7d483b8e="" data-v-bc55024c="" class="c-pane" attributes="[object Object]" style="min-width: 256px;">
+                      <div data-v-7d483b8e="" class="c-header">
+                        <div data-v-7d483b8e="" class="c-arrow-layout">
+                          <div data-v-1e7a4f86="" data-v-7d483b8e="" class="c-arrow svg-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 32">
+                            <title>angle-left</title>
+                            <path d="M11.196 10c0 0.143-0.071 0.304-0.179 0.411l-7.018 7.018 7.018 7.018c0.107 0.107 0.179 0.268 0.179 0.411s-0.071 0.304-0.179 0.411l-0.893 0.893c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-8.321-8.321c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l8.321-8.321c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l0.893 0.893c0.107 0.107 0.179 0.25 0.179 0.411z"></path>
+                          </svg></div>
+                        </div>
+                        <div data-v-7d483b8e="" class="c-title-layout align-center">
+                          <div data-v-1ad2436f="" data-v-7d483b8e="" tabindex="-1" class="c-title-popover popover-container">
+                            <!---->
+                            <div data-v-7d483b8e="" class="c-title-anchor" data-v-1ad2436f="">
+                              <div data-v-7d483b8e="" class="c-title">
+                                September 2019
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div data-v-7d483b8e="" class="c-arrow-layout">
+                          <div data-v-1e7a4f86="" data-v-7d483b8e="" class="c-arrow svg-icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 32">
+                            <title>angle-right</title>
+                            <path d="M10.625 17.429c0 0.143-0.071 0.304-0.179 0.411l-8.321 8.321c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-0.893-0.893c-0.107-0.107-0.179-0.25-0.179-0.411 0-0.143 0.071-0.304 0.179-0.411l7.018-7.018-7.018-7.018c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l0.893-0.893c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l8.321 8.321c0.107 0.107 0.179 0.268 0.179 0.411z"></path>
+                          </svg></div>
+                        </div>
+                      </div>
+                      <!---->
+                      <div data-v-7d483b8e="" class="c-weekdays">
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          S
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          M
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          T
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          W
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          T
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          F
+                        </div>
+                        <div data-v-7d483b8e="" class="c-weekday">
+                          S
+                        </div>
+                      </div>
+                      <!---->
+                      <div data-v-7d483b8e="" class="c-weeks">
+                        <div data-v-7d483b8e="" class="c-weeks-rows-wrapper">
+                          <div data-v-28896542="" data-v-7d483b8e="" styles="[object Object]" formats="[object Object]" attributes="[object Object]" class="c-weeks-rows">
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        1
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        2
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        3
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        4
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        5
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        6
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        7
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        8
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f="">
+                                    <div data-v-3db80f80="" class="c-day-layer c-day-box-center-center c-day-scale-enter c-day-scale-leave">
+                                      <div data-v-3db80f80="" class="c-day-background" style="width: 1.8rem; height: 1.8rem; background-color: rgb(0, 174, 102); border-width: 0px; border-style: solid; border-radius: 50%; opacity: 1;"></div>
+                                    </div>
+                                  </div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content" style="color: rgb(255, 255, 255);">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        9
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        10
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        11
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        12
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        13
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        14
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        15
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        16
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        17
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        18
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        19
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        20
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        21
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        22
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        23
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        24
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        25
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        26
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        27
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        28
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        29
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        30
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        1
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        2
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        3
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        4
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        5
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                            <div data-v-28896542="" class="c-week">
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        6
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        7
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        8
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        9
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        10
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        11
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                              <div data-v-1ad2436f="" data-v-3db80f80="" data-v-28896542="" class="c-day-popover popover-container">
+                                <!---->
+                                <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day" style="opacity: 0.4;">
+                                  <div data-v-3db80f80="" class="c-day-backgrounds c-day-layer" data-v-1ad2436f=""></div>
+                                  <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content-wrapper">
+                                    <div data-v-3db80f80="" data-v-1ad2436f="" class="c-day-content">
+                                      <div data-v-3db80f80="" data-v-1ad2436f="">
+                                        12
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!---->
+                                  <!---->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="data_box" v-loading="loading">
+                <div class="tab_box" v-show="dataTabItem == 1">
+                  <h5>应收账单</h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="110">支付日期</th>
+                        <th width="64">状态</th>
+                        <th>房屋</th>
+                        <th width="120">金额</th>
+                        <th width="60">操作</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody">
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #1
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 266.6
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #2
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 449.82
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 4000
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 116.66
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 3栋105
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 1943.26
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4单元5002 次卧
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 1166.6
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4单元5002 xxxxx
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 746.48
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 xsadasdasd 次卧
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 3080
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 6300
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 2600
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          秦皇岛市 - 测试小区 2栋3单元501
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 5226.54
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()" >催缴</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab_box" v-show="dataTabItem == 2">
+                  <h5>应付账单 <span></span></h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="110">支付日期</th>
+                        <th width="64">状态</th>
+                        <th>房屋</th>
+                        <th width="120">金额</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody">
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #1
+                        </td>
+                        <td class="money">
+                          服务费 <br>
+                          ¥ 2
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab_box" v-show="dataTabItem == 3">
+                  <h5>本月未收账单</h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="110">支付日期</th>
+                        <th width="64">状态</th>
+                        <th>房屋</th>
+                        <th width="120">金额</th>
+                        <th width="60">操作</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody">
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #1
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 266.6
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #2
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 449.82
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 4000
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 116.66
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 3栋105
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 1943.26
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4单元5002 次卧
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 1166.6
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4单元5002 xxxxx
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 746.48
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 xsadasdasd 次卧
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 3080
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 6300
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                      <tr>
+                        <td>未支付</td>
+                        <td>未支付</td>
+                        <td>
+                          市辖区 - 学院派 4234534 房间 #3
+                        </td>
+                        <td class="money">
+                          房租 <br>
+                          ¥ 2600
+                        </td>
+                        <td><a href="javascript:;" @click="reminder()">催缴</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab_box" v-if="dataTabItem == 4">
+                  <h5>三日到期账单 <span></span></h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="110">支付日期</th>
+                        <th width="64">状态</th>
+                        <th>房屋</th>
+                        <th width="120">金额</th>
+                        <th width="60">操作</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody"></tbody>
+                  </table>
+                </div>
+                <div class="tab_box" v-if="dataTabItem == 5">
+                  <h5>租客信息</h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="120">姓名</th>
+                        <th width="220">房屋</th>
+                        <th width="120">拥有门禁</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody"></tbody>
+                  </table>
+                </div>
+                <div class="tab_box" v-if="dataTabItem == 6">
+                  <h5>租赁合同</h5>
+                  <table class="detail_table">
+                    <tbody class="thead">
+                      <tr>
+                        <th width="90">租约编号</th>
+                        <th>起止日期</th>
+                        <th width="70">状态</th>
+                        <th width="106">金额（元）</th>
+                      </tr>
+                    </tbody>
+                    <tbody class="tbody"></tbody>
+                  </table>
+                </div>           
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </main>
+  <script type="text/javascript">
+    if (!!window.ActiveXObject || "ActiveXObject" in window) {
+      document.getElementById("ie_timebox").classList.remove("hidden_time");
+    }
+  </script>
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <link href="public/v-calendar-0.9.5/v-calendar.min.css" rel="stylesheet">
+  <script src="public/v-calendar-0.9.5/v-calendar.min.js"></script>
+  <script type="text/javascript">
+
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: true,
+        currentMenu: 'hp',
+        activeTab: 'first',
+        activeName: 'first',
+        billDialogVisible: false,
+        overviewData: {},
+        dataTabItem: '1',
+        calendarAttrs: [{
+          key: 'currentDay',
+          highlight: {
+            backgroundColor: '#00AE66',
+          },
+          contentStyle: {
+            color: '#FFFFFF',
+          },
+          dates: new Date()
+        }],
+      },
+      methods: {
+        openUrgeBox: function() {
+        },
+
+        getOverview: function() {
+          this.loading = true
+
+          },
+
+          dayClicked: function(date) {
+            this.calendarAttrs[0].dates = date.date
+            this.getOverview()
+          },
+
+          reminder: function() {
+            this.$confirm('将向用户发送催缴短信, 是否继续?', '提示', { type: 'warning' }).then(function(response) {
+              pageapp.$message('催缴短信已发送')
+            }).catch(function(response) { return false })
+          },
+
+        },
+        mounted: function() {
+        // this.getOverview()
+      }
+    })
+
+    Chart.defaults.global.legend.display = false;
+    var ctx = document.getElementById('incomeChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+      labels: ["12月", "1月", "2月", "3月", "4月", "5月"],
+      datasets: [{
+        displayLegend: false,
+        backgroundColor: 'rgba(255, 99, 132, .1)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        data: [0, 0, 0, 68875, 0, 125797],
+      }]
+    },
+
+    // Configuration options go here
+    options: {
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="星球" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="星球主页-点赞列表" transform="translate(-1175.000000, -1016.000000)" fill-rule="nonzero" fill="#8C8C8C">
+            <path d="M1179.92898,1021.77545 L1175.2385,1017.33124 C1175.08562,1017.18638 1175,1016.97779 1175,1016.78078 C1175,1016.58377 1175.08562,1016.38677 1175.2385,1016.23032 C1175.56261,1015.92323 1176.08242,1015.92323 1176.38819,1016.23032 L1180.49771,1020.12408 L1184.60723,1016.23032 C1184.93134,1015.92323 1185.45115,1015.92323 1185.75691,1016.23032 C1186.08103,1016.53742 1186.08103,1017.02993 1185.75691,1017.31965 L1181.06644,1021.76386 C1180.7729,1022.07675 1180.25309,1022.07675 1179.92898,1021.77545 L1179.92898,1021.77545 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

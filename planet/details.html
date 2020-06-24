@@ -1,0 +1,819 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+  <title>
+    Vation - Planet
+  </title>
+  <meta property="og:type" content="website" /> 
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="">
+  <link rel="icon" href="images/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,700i,800" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_413014_105l0vjrte2ymn29.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css"> -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_442809_3k9jfne229m.css">
+  <link rel="stylesheet" href="style/pure.css">
+  <link rel="stylesheet" href="style/application.css">
+  <!-- import element CSS -->
+  <!-- <link rel="stylesheet" href="<%= Setting.jscdn %>/element-ui@2.9.1/lib/theme-chalk/index.css">  -->
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full">
+        <ul class="nav_main">
+          <a href="index.html" class="logo"><img src="images/logo.png" alt="logo" style="width: 80px; height: 18px;"></a>
+          <!-- <li><a href="/">小宇宙</a></li> -->
+          <li><a href="list.html">星球列表</a></li>
+        </ul>
+        <div class="nav_user">
+          <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+              <!-- <li class="pure-menu-item pure-menu-selected"><a href="/welcome/my_planet">我的星球</a></li> -->
+              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="menuLink1" class="pure-menu-link account_menu"><span>Vation</span><img class="avatar" src="images/nav_avatar.png" alt="<%= current_user.name %>" style="width: 30px;" /></a>
+                <ul class="pure-menu-children">
+                  <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link account_menu_item">账户设置</a></li>
+                  <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link account_menu_item">退出登录</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="pageapp">
+    <div class="banner planet_details" style="background-image: url(https://dev.uihubcdn.com/banner_index.jpg);">
+      <div class="container_text_center">
+        <img src="images/planet_host_img.png" alt="avatar">
+        <h3>漫画小新</h3>
+        <p>我叫小新，但很少用蜡笔画漫画，除了画画没什么别的爱好，就喜欢用画笔表达我的奇思怪想</p>
+        <a href="">
+          <ul>
+            <li><img src="images/sponser_1.png" alt=""></li>
+            <!-- <li><img src="images/sponser_2.png" alt=""></li>
+            <li><img src="images/sponser_3.png" alt=""></li>
+            <li><img src="images/sponser_4.png" alt=""></li> -->
+            <li><img src="images/sponser_5.png" alt=""></li>
+           <!--  <li><img src="images/sponser_6.png" alt=""></li>
+            <li><img src="images/sponser_7.png" alt=""></li> -->
+            <li><img src="images/sponser_8.png" alt=""></li>
+            <!-- <li><img src="images/sponser_9.png" alt=""></li> -->
+            <li><img src="images/sponser_10.png" alt=""></li>
+            <li><span>+ 142</span></li>
+          </ul>
+        </a>
+        <small>骄傲的赞助者</small>
+      </div>
+    </div>
+    <div class="container_details">
+      <div class="planet_info_panel">
+        <div class="info_card info">
+          <img src="images/planet_info_hostimg.png" alt="">
+          <div>
+            <h4>漫画小新</h4>
+            <small>创建于 2017-10-03</small>
+          </div>
+        </div>
+        <div class="info_card intro">
+          <span>“</span>
+          <p>我叫小新，但很少用蜡笔画漫画，除了画画没什么别的爱好，就喜欢用画笔表达我的奇思怪想</p>
+          <span class="span_right">”</span>
+        </div>
+        <div class="info_card support">
+          <a href="" class="link_button support">¥ 120 支持他创作一年</a>
+          <p>会员有效期：2017/9/29 至 2018/9/29</p>
+          <a href=""> 查看条款</a>
+        </div>
+        <div class="info_card sponsor">
+          <h4>已支持他的会员</h4>
+          <small>任何从事创作或艺术的人，只要能获得一千位铁杆粉丝，就足够生计无忧，自由创作</small>
+          <small class="name">凯文·凯利</small>
+          <a href="">
+            <ul>
+              <li><img src="images/s1.png"></li>
+              <li><img src="images/s2.png"></li>
+              <li><img src="images/s3.png"></li>
+              <li><img src="images/s9.png"></li>
+              <li><img src="images/s4.png"></li>
+              <li><img src="images/s5.png"></li>
+              <li><img src="images/s6.png"></li>
+              <li><img src="images/s7.png"></li>
+              <li><img src="images/s8.png"></li>
+              <li><img src="images/s10.png"></li>
+              <li><img src="images/s11.png"></li>
+              <li><img src="images/s12.png"></li>
+              <li><img src="images/s13.png"></li>
+              <li><img src="images/s14.png"></li>
+              <li><img src="images/s15.png"></li>
+              <li><img src="images/s16.png"></li>
+              <li><img src="images/s17.png"></li>
+              <li><img src="images/s18.png"></li>
+              <li><img src="images/s1.png"></li>
+              <li><img src="images/s2.png"></li>
+              <li><img src="images/s3.png"></li>
+              <li><img src="images/s9.png"></li>
+              <li><img src="images/s4.png"></li>
+              <li><img src="images/s5.png"></li>
+              <li><img src="images/s6.png"></li>
+              <li><img src="images/s7.png"></li>
+              <li><img src="images/s8.png"></li>
+              <li><img src="images/s10.png"></li>
+              <li><img src="images/s11.png"></li>
+              <li><img src="images/s12.png"></li>
+              <li><img src="images/s13.png"></li>
+              <li><img src="images/s14.png"></li>
+              <li><img src="images/s15.png"></li>
+              <li><img src="images/s16.png"></li>
+              <li><img src="images/s17.png"></li>
+              <li><img src="images/s18.png"></li>
+            </ul>
+          </a>
+        </div>
+      </div>
+      <div class="planet_content_panel">
+        <div class="share_planet_box">
+          <small>分享</small>
+          <a href=""><img src="images/wechat.svg"></a>
+          <a href=""><img src="images/moment.svg"></a>
+          <a href=""><img src="images/qq.svg"></a>
+          <a href=""><img src="images/link.svg"></a>
+        </div>
+        <el-tabs v-model="activeName"  class="planet_content_tab">
+          <el-tab-pane label="全部主题" name="first">
+            <div class="topic_card public">
+              <textarea class="topic_public_input" placeholder="说点什么"></textarea>
+              <div class="topic_public_foot">
+                <ul>
+                  <li><a href=""><i class="dylan-iconfont el-icon-iconfont-pic"></i></a></li>
+                  <li><a href=""><i class="dylan-iconfont el-icon-iconfont-file"></i></a></li>
+                  <li><a class="work_btn" href=""><i class="dylan-iconfont el-icon-iconfont-work"></i></a></li>
+                </ul>
+                <button>发布</button>
+              </div>
+            </div>
+            <!-- 作品 -->
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <small>3天前发表</small>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>CG人物</h3>
+              </div>
+              <ul class="work_content img">
+                <li><a href=""><img src="https://dev.uihubcdn.com/work_img_1.jpg"></a></li>
+                <li><a href=""><img src="https://dev.uihubcdn.com/work_img_2.jpg"></a></li>
+              </ul>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+            <!-- 话题 -->
+            <div class="topic_card item talk">
+              <div class="topic_card info talk">
+                <div>
+                  <img src="images/topic_host_img1.png" class="avatar">
+                  <div class="talker_info">
+                    <h6>William Harvey</h6>
+                    <small>3天前</small>
+                  </div>
+                </div>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="talk_content">
+                <p>这几天无意中发现一首歌，个人感觉不错，分享给大家。</p>
+              </div>
+              <div class="topic_card handle_small">
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-like_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-reply_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-share_s"></i></span>
+              </div>
+              <div class="topic_card full reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- 成员可见 -->
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <small>3天前发表</small>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>CG人物</h3>
+              </div>
+              <div class="work_content member_only">
+                <p>只有会员才能观看</p>
+                <a href="" class="link_button">马上加入</a>
+              </div>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+            <!-- 音乐作品 -->
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <small>3天前发表</small>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>CG人物</h3>
+              </div>
+              <div class="work_content audio">
+                <a href=""><img src="images/music_play.svg"></a>
+                <div class="time_line"></div>
+                <span>00:00:00</span>
+              </div>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+            <!-- 带图片话题 -->
+            <div class="topic_card item talk">
+              <div class="topic_card info talk">
+                <div>
+                  <img src="images/topic_host_img1.png" class="avatar">
+                  <div class="talker_info">
+                    <h6>William Harvey</h6>
+                    <small>3天前</small>
+                  </div>
+                </div>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="talk_content">
+                <p>这几天无意中发现一首歌，个人感觉不错，分享给大家。</p>
+                <ul class="talk_content_img">
+                  <li><a href=""><img src="https://dev.uihubcdn.com/topic_img_thumb1.jpg"></a></li>
+                  <li><a href=""><img src="https://dev.uihubcdn.com/topic_img_thumb2.jpg"></a></li>
+                  <li><a href=""><img src="https://dev.uihubcdn.com/topic_img_thumb3.jpg"></a></li>
+                  <li><a href=""><img src="https://dev.uihubcdn.com/topic_img_thumb4.jpg"></a></li>
+                  <li><a href=""><img src="https://dev.uihubcdn.com/topic_img_thumb5.jpg"></a></li>
+                </ul>
+              </div>
+              <div class="topic_card handle_small">
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-like_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-reply_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-share_s"></i></span>
+              </div>
+              <div class="topic_card full reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- 文字作品 -->
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <small>第一章 3天前发表</small>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>三体</h3>
+              </div>
+              <div class="work_content article">
+                <h4>第一章 科学边界</h4>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;汪淼觉得，来找他的这四个人是一个奇怪的组合：两名警察和两名军人，如果那两个军人是武警还算正常，但这是两名陆军军官。汪淼第一眼就对来找他的警察没有好感。其实那名穿警服的年轻人还行，举止很有礼貌，但那位便衣就让人讨厌了。这人长得五大三粗，一脸横肉，</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;都不抬一下。不等汪淼回答，他就向旁边那位年轻人示意了一下，后者向汪淼出示了警官证，他点完烟后就直接向屋里闯。“请不要在我家里抽烟。”汪淼拦住了他。“哦，对不起，汪教授。这是我们史强队长。”年轻警官微笑着说，同时对姓史的使了个眼色。“成，那就在楼道里说吧。”史强说着，深深地吸了一大口，手中的烟几乎燃下去一半，之后竟不见吐出烟来。“你问。”他又向年轻警官偏了…</p>
+                <div class="show_more article"><a href="">阅读全文 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></div>
+              </div>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+            <!-- 带文件话题 -->
+            <div class="topic_card item talk">
+              <div class="topic_card info talk">
+                <div>
+                  <img src="images/topic_host_img1.png" class="avatar">
+                  <div class="talker_info">
+                    <h6>William Harvey</h6>
+                    <small>3天前</small>
+                  </div>
+                </div>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="talk_content">
+                <p>这几天无意中发现一首歌，个人感觉不错，分享给大家。</p>
+                <ul class="talk_files">
+                  <li><a href=""><span><img src="images/pdf.svg"> </span>健康医疗领域形态概述.pdf</a></li>
+                </ul>
+              </div>
+              <div class="topic_card handle_small">
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-like_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-reply_s"></i></span>
+                <span class="href"><i class="dylan-iconfont el-icon-iconfont-share_s"></i></span>
+              </div>
+              <div class="topic_card full reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- 视频作品 -->
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <div>
+                  <small>第一章 3天前发表</small>
+                </div>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>三体</h3>
+              </div>
+              <div class="work_content video">
+                <div class="video_player_thumb">
+                  <a href=""></a>
+                  <img src="https://dev.uihubcdn.com/video_cover.jpg">
+                </div>
+              </div>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+          </el-tab-pane>
+          <!-- 原创 -->
+          <el-tab-pane label="原创作品" name="second">
+            <div class="topic_card public_work">
+              <p class="public_title">发布作品</p>
+              <ul class="public_type">
+                <li><a href=""><img src="images/texticon.svg">
+                  <p>文字作品</p>
+                </a></li>
+                <li><a href=""><img src="images/imgicon.svg">
+                  <p>图片作品</p>
+                </a></li>
+                <li><a href=""><img src="images/videoicon.svg">
+                  <p>视频作品</p>
+                </a></li>
+                <li><a href=""><img src="images/audioicon.svg">
+                  <p>音频作品</p>
+                </a></li>
+              </ul>
+            </div>
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <small>3天前发表</small>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>CG人物</h3>
+              </div>
+              <ul class="work_content img">
+                <li><a href=""><img src="https://dev.uihubcdn.com/work_img_1.jpg"></a></li>
+                <li><a href=""><img src="https://dev.uihubcdn.com/work_img_2.jpg"></a></li>
+              </ul>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+          </el-tab-pane>
+          <!-- 精华 -->
+          <el-tab-pane label="精华" name="third">
+            <div class="topic_card work">
+              <div class="work_label_box">
+                <img src="images/work_host.png" alt="" class="avatar">
+                <span>原创作品</span>
+              </div>
+              <div class="topic_card info">
+                <div>
+                  <small>第一章 3天前发表</small>
+                </div>
+                <div class="pure-menu pure-menu-horizontal dropdown">
+                  <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" class="pure-menu-link"></a>
+                      <ul class="pure-menu-children dropdown">
+                        <li class="pure-menu-item dylan"><a href="/" class="pure-menu-link">置顶</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">设为精华</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">分享话题</a></li>
+                        <li class="pure-menu-item dylan"><a href="#" class="pure-menu-link">删除</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="topic_card title">
+                <h3>三体</h3>
+              </div>
+              <div class="work_content video">
+                <div class="video_player_thumb">
+                  <a href=""></a>
+                  <img src="https://dev.uihubcdn.com/video_cover.jpg">
+                </div>
+              </div>
+              <div class="topic_card reply">
+                <div class="like_box">
+                  <i class="dylan-iconfont el-icon-iconfont-thumbed"></i>
+                  <a href="">大目，吴运伟，李天风，张强，MIX_Z，一见，我就是我，发烧橙，灰灰，左边，贰，三三七，胡金隆，闲书，牛皮 …</a>
+                </div>
+                <div class="reply_list">
+                  <ul>
+                    <li>
+                      <p><span>我是我：</span>我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>心：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li>
+                      <p><span>发烧橙：</span>期待你更多的新作品，这首我收藏了，哈哈，是我喜欢的丝带尔。我不会告诉你我只不过就循环了30遍，仅仅30遍，哈。</p>
+                    </li>
+                    <li class="show_more"><a href="">共 120 条评论 <i class="dylan-iconfont el-icon-iconfont-more_left"></i></a></li>
+                  </ul>
+                </div>
+                <ul class="topic_card handle">
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-like"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-reply"></i></li>
+                  <li class="handle_item href"><i class="dylan-iconfont el-icon-iconfont-share"></i></li>
+                </ul>
+              </div>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </div>
+  </div>
+
+
+  <style type="text/css">body{background-color: #F2F2F2;} footer{display: none;}</style>
+  <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script type="text/javascript">
+
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        activeName: 'first'
+      },
+      methods: {
+        // handleClick(tab, event) {
+        //   console.log(tab, event);
+        // }
+      },
+      created: function () {
+        var self = this
+      }
+    })
+  </script>
+
+</main>
+<footer id="footer">
+  <div id="copyright">
+    Copyright © 2017 chuangzhaoxingqiu LLC. 
+    <a href="mailto:dev@chuangzhaoxingqiu.com?Subject=Hello" target="_blank" style="margin-left: 10px;">Contact</a>
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39790456-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript" src="script/vue.js"></script>
+</body>
+</html>

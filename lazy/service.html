@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Vation - 懒租
+  </title>
+  <meta name="description" content="The Best screenshot cloud.">
+  <meta property="og:title" content="chuangzhaoxingqiu.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="https://dev.uihubcdn.com/favicon.png">
+  <!--[if IE 6]><![endif]-->
+  <!--[if IE 7]><![endif]-->
+  <!--[if IE 8]><![endif]-->
+  <link rel="stylesheet" media="screen" href="public/pure.css">
+  <link rel="stylesheet" media="screen" href="public/element-2.2.0/index.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_570233_oc316udzhi.css">
+  <link rel="stylesheet" media="screen" href="public/style.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="vd5qwA20fiqL6X0lWAByO8ynLLNre6gomVMjLQhI9d0h079pkZihQVUfoxGyyoevTZA/bmzrp05/4rVRF8R/lA==">
+  <style type="text/css">
+    /* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      -webkit-animation: chartjs-render-animation 0.001s;
+      animation: chartjs-render-animation 0.001s;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar">
+      <div class="container_full"><a href="#" class="logo"><img src="images/logo.png" alt="logo"><span class="product_name">懒租业主 </span><span class="spec">| </span><span class="company_name">万科物业有限公司</span></a>
+        <div class="nav_user">
+          <div class="menu menu-horizontal">
+            <ul class="menu-list">
+              <li class="menu-item menu-selected"><a href="#">业主</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="pageapp" v-cloak>
+      <div class="dashboard">
+        <div class="dashboard_nav">
+          <div class="dashboard_card dashboard_menu">
+            <div class="menu custom-restricted-width">
+              <ul class="menu-list">
+                <li class="menu-item top "><a href="overview.html" class="menu-link"><i class="element-icons el-icon-iconfont-overview"></i>概况</a></li>
+                <li class="menu-item"><a href="community.html" class="menu-link"><i class="element-icons el-icon-iconfont-community"></i>小区管理</a></li>
+                <li class="menu-item"><a href="house.html" class="menu-link"><i class="element-icons el-icon-iconfont-house"></i>房屋管理</a></li>
+                <li class="menu-item"><a href="tenant.html" class="menu-link"><i class="element-icons el-icon-iconfont-tenant"></i>租户管理</a></li>
+                <li class="menu-item "><a href="bill.html" class="menu-link"><i class="element-icons el-icon-iconfont-money"></i>收支账单</a></li>
+                <li class="menu-item"><a href="chart.html" class="menu-link"><i class="element-icons el-icon-iconfont-statistics"></i>统计分析</a></li>
+                <li class="menu-item menu-selected"><a href="#" class="menu-link"><i class="element-icons el-icon-iconfont-service"></i>服务请求</a></li>
+                <li class="menu-item"><a href="setting.html" class="menu-link"><i class="element-icons el-icon-iconfont-me"></i>我的</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard_content_box">
+          <div class="dashboard_content">
+            <div class="overview_panel">
+              <ul class="overview_text">
+                <h2>服务项概况</h2>
+                <li class="text_box">
+                  <p>当前进行</p>
+                  <h4 class="number">18</h4>
+                </li>
+                <li class="text_box">
+                  <p>等待上门</p>
+                  <h4 class="number">0</h4>
+                </li>
+                <li class="text_box">
+                  <p>本月服务应付</p>
+                  <h4 class="number">¥ 0</h4>
+                </li>
+                <li class="text_box">
+                  <p>半年平均维修费用</p>
+                  <h4 class="number">¥ 0</h4>
+                </li>
+              </ul>
+              <div class="overview_chart">
+                <h2>近半年故障及维修费用数量</h2>
+                <div class="chart_box" style="width: 100%; height: 150px;">
+                  <canvas id="incomeChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="detail_panel">
+              <div class="panel_title_box">
+                <h2>服务请求</h2>
+                <el-button class="new_house_btn" type="primary" @click="newServiceDialogVisible = true">申请服务</el-button>
+                <el-button class="new_house_btn" type="primary" @click="newEmergencyServiceDialogVisible = true">紧急服务</el-button>
+              </div>
+              <div class="conditions_box">
+                <el-cascader size="large" :options="regionData" :props="{value: 'label'}" v-model="searchParams.selected_region" placeholder="省市区"></el-cascader>
+                <el-select v-model="searchParams.valley_id" placeholder="小区">
+                  <el-option label="全部小区" value=""></el-option>
+                  <el-option v-for="valley in valleys" :key="valley.id" :label="valley.title" :value="valley.id"></el-option>
+                </el-select>
+                <el-date-picker v-model="searchParams.date_range" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="quickDateRangeOptions" style="width: 270px;"></el-date-picker>
+                <el-checkbox v-model="searchParams.mine" class="myself_checkbox">只显示需要我处理的</el-checkbox>
+              </div>
+              <div class="service_content_box">
+                <table class="detail_table" v-loading="loading">
+                  <tbody class="thead">
+                    <tr>
+                      <th>相关房屋</th>
+                      <th width="140">预约时间</th>
+                      <th width="210">服务时间</th>
+                      <th width="80">费用</th>
+                      <th width="64">状态</th>
+                      <th width="120" style="text-align: center;">评价</th>
+                    </tr>
+                  </tbody>
+                  <tbody class="tbody">
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派4234534
+                        <p>
+                          维修: <span>马桶堵 </span></p>
+                      </td>
+                      <td>紧急服务</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-04-18</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派4234534 房间 #1
+                        <p>
+                          维修: <span>煤气 </span><span>冰箱 </span>
+                        </p>
+                      </td>
+                      <td>2018-04-12 17:38</td>
+                      <td>
+                        2018-08-07 23:04
+                        <p>申请时间: 2018-04-10</p>
+                      </td>
+                      <td class="money">¥ 1 + 1</td>
+                      <td>已处理</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>其它 </span><span>电 </span>
+                        </p>
+                      </td>
+                      <td>2018-04-03 09:00</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-04-01</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>墙体 </span><span>冰箱 </span><span>煤气 </span>
+                        </p>
+                      </td>
+                      <td>2018-04-02 09:00</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-04-01</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>墙体 </span><span>冰箱 </span><span>煤气 </span>
+                        </p>
+                      </td>
+                      <td>2018-04-02 09:00</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-04-01</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>墙体 </span><span>冰箱 </span><span>电视 </span>
+                        </p>
+                      </td>
+                      <td>2018-03-14 09:00</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-03-18</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>房间漏水 </span>
+                        </p>
+                      </td>
+                      <td>紧急服务</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-03-17</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>马桶堵 </span>
+                        </p>
+                      </td>
+                      <td>紧急服务</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-03-15</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="title">
+                        市辖区 - 学院派
+                        <p>
+                          维修: <span>马桶堵 </span><span>门禁无法打开 </span>
+                        </p>
+                      </td>
+                      <td>紧急服务</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-03-15</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                    <tr>
+                    <td class="title">
+                      市辖区 - 学院派
+                      <p>
+                        维修: <span>房间漏水 </span>
+                      </p>
+                      </td>
+                      <td>紧急服务</td>
+                      <td>
+                        未分派
+                        <p>申请时间: 2018-03-15</p>
+                      </td>
+                      <td class="money">¥ 0.00</td>
+                      <td>未分派</td>
+                      <td style="text-align: center;">
+                        未评价
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <el-pagination background layout="total, prev, pager, next, jumper" :current-page.sync="currentPage" :total="totalCount"></el-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="public/vue-2.5.13/vue.js"></script>
+  <script src="public/pure-1.0.0/menus.js"></script>
+  <script src="public/lodash-4.17.4/lodash.min.js"></script>
+  <script src="public/axios-0.16.2/axios.min.js"></script>
+  <script src="public/vue-clipboard.min.js"></script>
+  <script src="public/timeago.min.js"></script>
+  <script src="public/vuelidate-0.6.1/vuelidate.min.js"></script>
+  <script src="public/vuelidate-0.6.1/validators.min.js"></script>
+  <script src="public/vue-countdown.min.js"></script>
+  <script src="public/vue-lazyload.js"></script>
+  <script src="public/vue-infinite-loading.js"></script>
+  <script src="public/qrious.min.js"></script>
+  <script src="public/element-2.2.0/index.js"></script>
+  <script src="public/chartjs-2.7.2/chart.min.js"></script>
+  <script src="public/area-data.js"></script>
+  <script type="text/javascript">
+    // 全局 Header vue，导航等全局的VUE放置在这里
+    var headerapp = new Vue({
+      el: '#header',
+      data: {
+        loading: false,
+        currentUser: { "id": 9, "avatar": { "url": "https://dev.uihubcdn.com/avatar/9/4110574b6959aee2509420737bcdd082.png" } },
+      },
+      methods: {},
+      created: function() {}
+    })
+  </script>
+  <link href="public/v-calendar-0.9.5/v-calendar.min.css" rel="stylesheet">
+  <script src="public/v-calendar-0.9.5/v-calendar.min.js"></script>
+  <script type="text/javascript">
+    var pageapp = new Vue({
+      el: '#pageapp',
+      data: {
+        loading: false,
+        dialogLoading: false,
+        currentMenu: 'services',
+        currentActiveTab: 'info',
+        regionData: regionDataPlus,
+        valleys: [],
+        services: [],
+        newServiceDialogVisible: false,
+        newEmergencyServiceDialogVisible: false,
+        showChooseHouseDialogVisible: false,
+        candidateHouses: [],
+        choosedHouseTitle: "",
+        newService: { items: [] },
+        serviceItemsList: { "wall": "墙体", "gas": "煤气", "water": "其它", "electric": "电", "refrigerator": "冰箱", "tv": "电视", "washing": "洗衣机", "conditioning": "空调", "heater": "热水器", "furniture": "家具", "heating": "暖气", "cleaning": "保洁" },
+        emergencyServiceItemsList: { "room_leaking": "房间漏水", "toilet_clogged": "马桶堵", "close_door": "门禁无法打开", "other": "其它" },
+        quickDateRangeOptions: {
+          
+        },
+        totalCount: 1,
+        currentPage: 1,
+        searchParams: {
+          mine: false,
+          date_range: [],
+          valley_id: '',
+          selected_region: ["全部"]
+        },
+        searchHouseQ: ""
+      },
+      watch: {
+        searchParams: {
+            // handler: function(val, oldVal) { this.search() },
+            // deep: true
+          }
+        },
+        methods: {
+          cleanForm: function() {
+            pageapp.newService.items = []
+            pageapp.newService.emergency = 0
+            pageapp.newService.booking_day = ""
+            pageapp.newService.booking_time = ""
+          },
+
+          cleanCurrent: function(done) {
+            this.cleanForm()
+            done();
+          },
+
+
+          showChooseHouse: function() {
+            pageapp.showChooseHouseDialogVisible = true
+          },
+
+
+          setHouseOrRoom: function(valleyId, houseId, roomId, choosedHouseTitle) {
+            pageapp.newService.valley_id = valleyId
+            pageapp.newService.house_id = houseId
+            pageapp.newService.room_id = roomId ? roomId : null
+            pageapp.choosedHouseTitle = choosedHouseTitle
+            pageapp.showChooseHouseDialogVisible = false
+          }
+
+        },
+        mounted: function() {}
+      })
+
+    Chart.defaults.global.legend.display = false;
+    var ctx = document.getElementById('incomeChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+      labels: ["12月", "1月", "2月", "3月", "4月", "5月"],
+      datasets: [{
+        displayLegend: false,
+        backgroundColor: 'rgba(255, 99, 132, .1)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        data: [0, 0, 0, 17, 2, 0],
+      }]
+    },
+
+    // Configuration options go here
+    options: {
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
