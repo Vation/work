@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2560px" height="54px" viewBox="0 0 2560 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>footer-wave</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="2560" height="54"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="footer-wave">
+            <g id="Mask" fill="#F3F4F6" fill-rule="nonzero">
+                <rect id="path-1" x="0" y="0" width="2560" height="54"></rect>
+            </g>
+            <g id="wave-Clipped">
+                <g>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <path d="M-622,4.31530547 C-622,4.31530547 -492.687949,5.02474286 -413.670738,17.7683405 C-334.653526,30.5119381 -219.702662,35.4674897 -97.5712045,34.7606799 C24.5602528,34.05387 175.414083,17.7683405 405.315811,28.388881 C635.21754,39.006794 771.434007,50.5233277 965.678259,50.3367719 C1160.96585,50.1475886 1449.72389,25.7665902 1633.19725,25.5563866 C1821.58042,25.3409278 1986.12034,56.1883167 2201.32333,55.9991334 C2424.35133,55.804695 2596.44008,36.8837369 2740.11331,24.1401393 C2916.40608,8.50361363 2970.01504,5.02474286 3077.75463,4.31530547 C3185.5249,3.60586808 -622,4.31530547 -622,4.31530547 Z" id="wave" fill="#172B4D" fill-rule="nonzero" mask="url(#mask-2)" transform="translate(1229.000001, 30.000000) scale(-1, 1) rotate(-180.000000) translate(-1229.000001, -30.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
