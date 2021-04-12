@@ -525,7 +525,9 @@ footer{
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
 }
+
 footer p, footer a{
   display: inline-block;
   color: #191A1E;
