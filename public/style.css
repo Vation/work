@@ -575,4 +575,8 @@ footer .contact_box p i{
   font-size: .9rem;
   margin-right: .5rem;
 }
-
+.skill_small{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
