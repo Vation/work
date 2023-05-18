@@ -51,6 +51,9 @@
       -webkit-animation: chartjs-render-animation 0.001s;
       animation: chartjs-render-animation 0.001s;
     }
+    .option_box .el-cascader, .option_box .el-select{
+      margin-right: 20px;
+    }
   </style>
 </head>
 
@@ -123,12 +126,15 @@
                 <el-button class="new_house_btn" type="primary" @click="newEmergencyServiceDialogVisible = true">紧急服务</el-button>
               </div>
               <div class="conditions_box">
-                <el-cascader size="large" :options="regionData" :props="{value: 'label'}" v-model="searchParams.selected_region" placeholder="省市区"></el-cascader>
+                <div class="option_box" >
+                  <el-cascader size="large" :options="regionData" :props="{value: 'label'}" v-model="searchParams.selected_region" placeholder="省市区"></el-cascader>
                 <el-select v-model="searchParams.valley_id" placeholder="小区">
                   <el-option label="全部小区" value=""></el-option>
                   <el-option v-for="valley in valleys" :key="valley.id" :label="valley.title" :value="valley.id"></el-option>
                 </el-select>
                 <el-date-picker v-model="searchParams.date_range" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="quickDateRangeOptions" style="width: 270px;"></el-date-picker>
+              </div>
+                
                 <el-checkbox v-model="searchParams.mine" class="myself_checkbox">只显示需要我处理的</el-checkbox>
               </div>
               <div class="service_content_box">

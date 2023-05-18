@@ -51,6 +51,10 @@
       -webkit-animation: chartjs-render-animation 0.001s;
       animation: chartjs-render-animation 0.001s;
     }
+    .option_box .el-cascader, .option_box .el-select{
+      margin-right: 20px;
+    }
+
   </style>
 </head>
 
@@ -122,7 +126,7 @@
                 <el-button class="new_house_btn" type="primary" @click="newBillDialogVisible = true">创建自定义账单</el-button>
               </div>
               <div class="conditions_box">
-                <div>
+                <div class="option_box">
                   <el-select v-model="searchParams.bill_type" placeholder="类型">
                     <el-option label="类型" value=""></el-option>
                     <el-option label="房租" value="rent"></el-option>
