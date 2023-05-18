@@ -1494,3 +1494,6 @@ a:focus{
 .hidden_time{
   display: none;
 }
+.option_box{
+  display: flex;
+}
